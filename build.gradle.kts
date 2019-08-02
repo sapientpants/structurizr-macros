@@ -33,7 +33,7 @@ publishing {
             pom {
                 name.set("Structurizr Macros")
                 description.set("A collection of macros for Structurizr")
-                url.set("http://www.example.com/library")
+                url.set("https://github.com/sapientpants/structurizr-macros")
                 licenses {
                     license {
                         name.set("The MIT License")
@@ -50,7 +50,7 @@ publishing {
                 scm {
                     connection.set("scm:git:git@github.com:sapientpants/architecture-documentation-macros.git")
                     developerConnection.set("scm:git:git@github.com:sapientpants/architecture-documentation-macros.git")
-//                    url.set("http://example.com/my-library/")
+                    url.set("https://github.com/sapientpants/structurizr-macros")
                 }
             }
         }
