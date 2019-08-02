@@ -3,10 +3,21 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version Dependencies.kotlinVersion
     `maven-publish`
+    signing
 }
 
 group = "com.sapientpants.structurizr.macros"
 version = Version.FULL
+
+tasks.register<Jar>("sourcesJar") {
+    from(sourceSets.main.get().allSource)
+    archiveClassifier.set("sources")
+}
+
+tasks.register<Jar>("javadocJar") {
+    from(tasks.javadoc)
+    archiveClassifier.set("javadoc")
+}
 
 repositories {
     mavenCentral()
@@ -43,7 +54,7 @@ publishing {
                 developers {
                     developer {
                         id.set("sapientpants")
-                        name.set("Marc Tremblau")
+                        name.set("Marc Tremblay")
                         email.set("marc.tremblay@gmail.com")
                     }
                 }
@@ -54,9 +65,21 @@ publishing {
                 }
             }
         }
+
+        repositories {
+            maven {
+                val releasesRepoUrl = "$buildDir/repos/releases"
+                val snapshotsRepoUrl = "$buildDir/repos/snapshots"
+                url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            }
+        }
     }
 }
 
+signing {
+    useGpgCmd()
+    sign(configurations.archives.get())
+}
 
 
 tasks.withType<KotlinCompile> {
