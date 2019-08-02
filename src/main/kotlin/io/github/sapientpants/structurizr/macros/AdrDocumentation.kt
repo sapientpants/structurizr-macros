@@ -1,4 +1,4 @@
-package com.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros
 
 import com.structurizr.Workspace
 import com.structurizr.documentation.AdrToolsImporter

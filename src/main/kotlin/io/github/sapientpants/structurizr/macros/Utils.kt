@@ -1,4 +1,4 @@
-package com.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros
 
 object Utils {
     fun keyify(s: String): String {

@@ -1,4 +1,4 @@
-package com.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros
 
 import com.structurizr.analysis.ComponentFinder
 import com.structurizr.analysis.ReferencedTypesSupportingTypesStrategy

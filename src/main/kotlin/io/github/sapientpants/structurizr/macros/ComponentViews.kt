@@ -1,4 +1,4 @@
-package com.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros
 
 import com.structurizr.model.Component
 import com.structurizr.model.Container

@@ -6,16 +6,16 @@ plugins {
     signing
 }
 
-group = "com.sapientpants.structurizr.macros"
+group = "io.github.sapientpants"
 version = Version.FULL
 extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
 
-tasks.register<Jar>("sourcesJar") {
+val sourcesJar = tasks.register<Jar>("sourcesJar") {
     from(sourceSets.main.get().allSource)
     archiveClassifier.set("sources")
 }
 
-tasks.register<Jar>("javadocJar") {
+var javadocJar = tasks.register<Jar>("javadocJar") {
     from(tasks.javadoc)
     archiveClassifier.set("javadoc")
 }
@@ -37,11 +37,12 @@ dependencies {
     implementation(Dependencies.structurizrSpring)
 }
 
-
-
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
+            from(components["java"])
+            artifact(sourcesJar.get())
+            artifact(javadocJar.get())
             pom {
                 name.set("Structurizr Macros")
                 description.set("A collection of macros for Structurizr")
@@ -69,7 +70,7 @@ publishing {
 
         repositories {
             maven {
-                val releasesRepoUrl = "$buildDir/repos/releases"
+                val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
                 val snapshotsRepoUrl = "$buildDir/repos/snapshots"
                 url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
             }
