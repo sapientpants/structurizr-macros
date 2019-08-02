@@ -1,2 +1,2 @@
-# architecture-documentation-macros
+# Structurizr Macros
 
