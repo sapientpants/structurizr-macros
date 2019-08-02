@@ -8,6 +8,7 @@ plugins {
 
 group = "com.sapientpants.structurizr.macros"
 version = Version.FULL
+extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
 
 tasks.register<Jar>("sourcesJar") {
     from(sourceSets.main.get().allSource)
@@ -78,6 +79,9 @@ publishing {
 
 signing {
     useGpgCmd()
+    setRequired({
+        (project.extra["isReleaseVersion"] as Boolean) && gradle.taskGraph.hasTask("uploadArchives")
+    })
     sign(configurations.archives.get())
 }
 
