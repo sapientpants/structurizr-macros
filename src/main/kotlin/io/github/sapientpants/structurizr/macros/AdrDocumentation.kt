@@ -6,6 +6,15 @@ import com.structurizr.model.SoftwareSystem
 import java.io.File
 
 object AdrDocumentation {
+    private const val DEFAULT_ARD_DIRECTORY_PATH = "./src/main/markdown/adr"
+
+    fun addToWorkspace(
+        workspace: Workspace,
+        softwareSystem: SoftwareSystem
+    ) {
+        addToWorkspace(workspace, softwareSystem, DEFAULT_ARD_DIRECTORY_PATH)
+    }
+
     fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem,
