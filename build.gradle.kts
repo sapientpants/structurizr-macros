@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    jacoco
     kotlin("jvm") version Dependencies.kotlinVersion
     `maven-publish`
     signing
@@ -35,6 +36,47 @@ dependencies {
     implementation(Dependencies.structurizrCore)
     implementation(Dependencies.structurizrPlantUml)
     implementation(Dependencies.structurizrSpring)
+
+    testImplementation(Dependencies.junitApi)
+    testImplementation(Dependencies.junitEngine)
+}
+
+jacoco {
+    toolVersion = "0.8.4"
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.isEnabled = true
+        xml.destination = file("$buildDir/reports/jacoco/report.xml")
+    }
+}
+
+//tasks.jacocoTestCoverageVerification {
+//    violationRules {
+//        rule {
+//            limit {
+//                minimum = "0.5".toBigDecimal()
+//            }
+//        }
+//
+//        rule {
+//            enabled = false
+//            element = "CLASS"
+//            includes = listOf("io.github.sapientpants.*")
+//
+//            limit {
+//                counter = "LINE"
+//                value = "TOTALCOUNT"
+//                maximum = "0.3".toBigDecimal()
+//            }
+//        }
+//    }
+//}
+
+tasks.test {
+    useJUnitPlatform()
+
 }
 
 if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
