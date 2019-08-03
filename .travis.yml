@@ -6,3 +6,4 @@ addons:
 
 script:
   - gradle build
+  - sonar-scanner
