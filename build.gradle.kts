@@ -11,12 +11,12 @@ group = "io.github.sapientpants"
 version = Version.FULL
 extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
 
-val sourcesJar = tasks.register<Jar>("sourcesJar") {
+tasks.register<Jar>("sourcesJar") {
     from(sourceSets.main.get().allSource)
     archiveClassifier.set("sources")
 }
 
-var javadocJar = tasks.register<Jar>("javadocJar") {
+tasks.register<Jar>("javadocJar") {
     from(tasks.javadoc)
     archiveClassifier.set("javadoc")
 }
@@ -78,14 +78,14 @@ tasks.test {
     useJUnitPlatform()
 
 }
-
+println(components.asMap)
 if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
     publishing {
         publications {
-            create<MavenPublication>("mavenJava") {
-                from(components["java"])
-                artifact(sourcesJar.get())
-                artifact(javadocJar.get())
+            create<MavenPublication>("mavenKotlin") {
+                from(components["kotlin"])
+                artifact(tasks["sourcesJar"])
+                artifact(tasks["javadocJar"])
                 pom {
                     name.set("Structurizr Macros")
                     description.set("A collection of macros for Structurizr")
@@ -130,6 +130,7 @@ if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) 
         setRequired({
             (project.extra["isReleaseVersion"] as Boolean) && gradle.taskGraph.hasTask("uploadArchives")
         })
+        sign(publishing.publications["mavenKotlin"])
         sign(configurations.archives.get())
     }
 }
