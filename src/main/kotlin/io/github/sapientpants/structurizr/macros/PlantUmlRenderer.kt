@@ -29,8 +29,6 @@ object PlantUmlRenderer {
 
     fun render(workspace: Workspace, writer: Writer) {
         val plantUmlWriter = PlantUMLWriter()
-//        Include C4 template for PlantUML
-//        writer.addIncludeURL()
 
         plantUmlWriter.write(workspace, writer)
     }
