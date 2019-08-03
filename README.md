@@ -7,7 +7,7 @@
 
 ## Getting started
 
-Add `io.github.sapientpants:structurizr-macros:0.0.2` as a dependency to your project
+Add `io.github.sapientpants:structurizr-macros:0.0.3` as a dependency to your project
 
 ### Architecture Decision Records
 
