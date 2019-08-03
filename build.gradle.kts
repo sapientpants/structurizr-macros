@@ -70,9 +70,13 @@ publishing {
 
         repositories {
             maven {
-                val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-                val snapshotsRepoUrl = "$buildDir/repos/snapshots"
+                val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
                 url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+                credentials {
+                    username = extra["maven.publish.username"] as String
+                    password = extra["maven.publish.password"] as String
+                }
             }
         }
     }
