@@ -7,10 +7,14 @@ import java.io.File
 
 
 object Arc42Documentation {
-    fun addToWorkspace(workspace: Workspace, softwareSystem: SoftwareSystem) {
+    fun addToWorkspace(
+        workspace: Workspace,
+        softwareSystem: SoftwareSystem,
+        arc42DirectoryPath: String
+    ) {
         val template = Arc42DocumentationTemplate(workspace)
 
-        val documentationRoot = File("./src/main/markdown/arc42")
+        val documentationRoot = File(arc42DirectoryPath)
         template.addIntroductionAndGoalsSection(
             softwareSystem,
             File(documentationRoot, "01-introduction-and-goals.md")
