@@ -5,9 +5,19 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=structurizr-macros&metric=coverage)](https://sonarcloud.io/dashboard?id=structurizr-macros)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=structurizr-macros&metric=security_rating)](https://sonarcloud.io/dashboard?id=structurizr-macros)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=structurizr-macros&metric=sqale_index)](https://sonarcloud.io/dashboard?id=structurizr-macros)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsapientpants%2Fstructurizr-macros.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsapientpants%2Fstructurizr-macros?ref=badge_shield)
 
+## Getting started
 
+Add `io.github.sapientpants:structurizr-macros:0.0.2` as a dependency to your project
 
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsapientpants%2Fstructurizr-macros.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsapientpants%2Fstructurizr-macros?ref=badge_large)
+### Architecture Decision Records
+
+`brew install adr-tools`
+
+`adr-init ./src/main/markdown/adr`
+
+### Arc42 Templates
+
+`mkdir -p ./src/main/markdown/arc42`
+
+Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown)
