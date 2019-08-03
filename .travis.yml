@@ -1,0 +1,8 @@
+language: java
+
+addons:
+  sonarcloud:
+    organization: "sapientpants-github"
+
+script:
+  - gradle build
