@@ -8,6 +8,11 @@ object Utils {
     }
 
     fun getProperty(key: String): String? {
+        val envValue = System.getenv(key)
+        if (envValue != null) {
+            return envValue
+        }
+
         val systemPropertyValue = System.getProperty(key)
         if (systemPropertyValue != null) {
             return systemPropertyValue
