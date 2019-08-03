@@ -7,6 +7,15 @@ import java.io.File
 
 
 object Arc42Documentation {
+    private const val DEFAULT_ARC42_DIRECTORY_PATH = "./src/main/markdown/arc42"
+
+    fun addToWorkspace(
+        workspace: Workspace,
+        softwareSystem: SoftwareSystem
+    ) {
+        addToWorkspace(workspace, softwareSystem, DEFAULT_ARC42_DIRECTORY_PATH)
+    }
+
     fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem,
