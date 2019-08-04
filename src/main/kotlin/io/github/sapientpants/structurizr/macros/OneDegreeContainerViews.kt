@@ -12,7 +12,7 @@ object OneDegreeContainerViews {
         softwareSystem.containers.forEach { container ->
             val containerView = views.createContainerView(
                 softwareSystem,
-                "${Utils.keyify(container.name)}-one-degree",
+                "${container.name} Dependents and Dependencies",
                 "The world according to the ${container.name}"
             )
             containerView.add(container)

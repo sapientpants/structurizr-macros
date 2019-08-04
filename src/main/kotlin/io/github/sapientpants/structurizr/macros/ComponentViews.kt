@@ -16,7 +16,7 @@ object ComponentViews {
             .forEach { container ->
                 val componentView = views.createComponentView(
                     container,
-                    Utils.keyify("${container.name} components"),
+                    "${container.name} components",
                     "Components diagram for ${container.name}."
                 )
                 container.components

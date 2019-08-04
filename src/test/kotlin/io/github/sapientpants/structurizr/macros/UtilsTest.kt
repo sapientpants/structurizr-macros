@@ -16,11 +16,6 @@ class UtilsTest {
     }
 
     @Test
-    fun `keyifying "My spec14l kEy" should equal "my_spec14l_key"`() {
-        assertEquals("my-spec14l-key", Utils.keyify("My spec14l kEy"))
-    }
-
-    @Test
     fun `getProperty returns value from system properties when defined there`() {
         System.setProperty(TEST_PROPERTY, SYSTEM_PROPERTIES_TEST_VALUE)
         assertEquals(SYSTEM_PROPERTIES_TEST_VALUE, Utils.getProperty(TEST_PROPERTY))
