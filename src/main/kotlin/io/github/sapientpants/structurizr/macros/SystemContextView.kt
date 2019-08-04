@@ -10,7 +10,6 @@ object SystemContextView {
             "SystemContext",
             "System Context diagram for ${softwareSystem.name}"
         )
-        contextView.addAllSoftwareSystems()
-        contextView.addAllPeople()
+        contextView.addAllElements()
     }
 }
