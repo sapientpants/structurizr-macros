@@ -5,6 +5,10 @@ import com.structurizr.view.ViewSet
 
 object ContainerViews {
     fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
+        if (softwareSystem.containers.isEmpty()) {
+            return
+        }
+
         val containerView = views.createContainerView(
             softwareSystem,
             "Containers",
