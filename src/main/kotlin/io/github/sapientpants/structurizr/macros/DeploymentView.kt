@@ -4,12 +4,17 @@ import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet
 
 object DeploymentView {
-    fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
-        val contextView = views.createDeploymentView(
+    fun addToViews(
+        softwareSystem: SoftwareSystem,
+        environment: String,
+        views: ViewSet
+    ) {
+        val deploymentView = views.createDeploymentView(
             softwareSystem,
-            "SystemContext",
+            "DeploymentView-${environment}",
             "Deployment diagram for ${softwareSystem.name}"
         )
-        contextView.addAllDeploymentNodes()
+        deploymentView.environment = environment
+        deploymentView.addAllDeploymentNodes()
     }
 }
