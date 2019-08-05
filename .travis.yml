@@ -26,6 +26,11 @@ before_install:
   - export PATH="$(pwd)/gradle-${GRADLE_VERSION}/bin:$PATH"
   - echo "TEST_KEY=DOTENV_TEST_VALUE" > .env
 
+jobs:
+  include:
+    - stage: scan
+      script: sonar-scanner
+      if: branch = master
+
 script:
   - gradle build
-  - sonar-scanner
