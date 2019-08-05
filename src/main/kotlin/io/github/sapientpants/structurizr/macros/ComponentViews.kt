@@ -8,11 +8,9 @@ import com.structurizr.view.ComponentView
 import com.structurizr.view.ViewSet
 
 object ComponentViews {
-    const val DO_NOT_RENDER = "ComponentViews_DO NOT RENDER"
-
     fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
         softwareSystem.containers
-            .filter { container -> !container.tags.contains(DO_NOT_RENDER) }
+            .filter { container -> !container.components.isEmpty() }
             .forEach { container ->
                 val componentView = views.createComponentView(
                     container,
