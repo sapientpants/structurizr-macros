@@ -15,6 +15,7 @@ object StructurizrInitializer {
      * @param workspaceName the name of the workspace
      * @param workspaceDescription the description of the workspace
      * @param enterpriseName the name of the enterprise
+     * @return an initialized workspace
      * @see com.structurizr.model.Enterprise
      * @see com.structurizr.model.Model
      * @see com.structurizr.Workspace
