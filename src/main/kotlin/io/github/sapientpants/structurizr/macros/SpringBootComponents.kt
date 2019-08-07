@@ -16,7 +16,8 @@ object SpringBootComponents {
     const val SPRING_REPOSITORY_TAG = "Spring Repository"
 
     fun addToContainer(container: Container, packageName: String, srcPath: String) {
-        val springComponentFinderStrategy = SpringComponentFinderStrategy(ReferencedTypesSupportingTypesStrategy(false))
+        val springComponentFinderStrategy =
+            SpringComponentFinderStrategy(ReferencedTypesSupportingTypesStrategy(false))
         springComponentFinderStrategy.setIncludePublicTypesOnly(false)
 
         val componentFinder = ComponentFinder(

@@ -8,7 +8,7 @@ object SystemContextView {
         val systemContextView = views.createSystemContextView(
             softwareSystem,
             "SystemContext",
-            "System Context diagram for ${softwareSystem.name}"
+            "System context diagram for ${softwareSystem.name}"
         )
         systemContextView.isEnterpriseBoundaryVisible = false
         systemContextView.addNearestNeighbours(softwareSystem)

@@ -1,13 +1,13 @@
 package io.github.sapientpants.structurizr.macros
 
-import com.structurizr.model.SoftwareSystem
+import com.structurizr.model.Enterprise
 import com.structurizr.view.ViewSet
 
 object SystemLandscapeView {
-    fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
+    fun addToViews(enterprise: Enterprise, views: ViewSet) {
         val systemLandscapeView = views.createSystemLandscapeView(
-            "SystemLandscape-${softwareSystem.name}",
-            "System landscape for ${softwareSystem.name}"
+            "SystemLandscape-${enterprise.name}",
+            "System landscape diagram for ${enterprise.name}"
         )
         systemLandscapeView.addAllElements()
     }
