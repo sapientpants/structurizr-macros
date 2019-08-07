@@ -6,7 +6,7 @@ import com.structurizr.model.Element
 import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet
 
-object NearestNeighboursView {
+object NearestNeighboursViews {
     fun addToViews(elements: Set<Element>, views: ViewSet) {
         elements.forEach { element ->
             when (element) {
