@@ -14,8 +14,10 @@ object ContainerViews {
             "Containers",
             "Container diagram for ${softwareSystem.name}"
         )
-        containerView.addAllPeople()
-        containerView.addAllSoftwareSystems()
-        containerView.addAllContainers()
+        softwareSystem.containers
+            .forEach { container ->
+                containerView.add(container)
+                containerView.addNearestNeighbours(container)
+            }
     }
 }
