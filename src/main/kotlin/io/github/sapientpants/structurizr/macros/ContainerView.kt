@@ -3,7 +3,7 @@ package io.github.sapientpants.structurizr.macros
 import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet
 
-object ContainerViews {
+object ContainerView {
     fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
         if (softwareSystem.containers.isEmpty()) {
             return
