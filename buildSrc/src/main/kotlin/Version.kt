@@ -1,3 +1,3 @@
 object Version {
-    const val FULL = "0.0.10-SNAPSHOT"
+    const val FULL = "0.0.10"
 }
