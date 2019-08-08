@@ -1,9 +1,11 @@
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     jacoco
     kotlin("jvm") version Dependencies.kotlinVersion
     `maven-publish`
+    id("org.jetbrains.dokka") version "0.9.17"
     signing
 }
 
@@ -11,18 +13,42 @@ group = "io.github.sapientpants"
 version = Version.FULL
 extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
 
-tasks.register<Jar>("sourcesJar") {
-    from(sourceSets.main.get().allSource)
-    archiveClassifier.set("sources")
+val dokka by tasks.getting(DokkaTask::class) {
+    outputFormat = "javadoc"
+    outputDirectory = "$buildDir/javadoc"
+    jdkVersion = 8
+
+    includes = listOf("src/main/kotlin/packages.md")
 }
 
-tasks.register<Jar>("javadocJar") {
-    from(tasks.javadoc)
-    archiveClassifier.set("javadoc")
+val dokkaJar by tasks.creating(Jar::class) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    description = "Assembles Kotlin docs with Dokka"
+    classifier = "javadoc"
+    from(dokka)
+}
+artifacts.add("archives", dokkaJar)
+
+val sourcesJar by tasks.creating(Jar::class) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    description = "Assembles sources JAR"
+    classifier = "sources"
+    from(sourceSets.getByName("main").allSource)
+}
+artifacts.add("archives", sourcesJar)
+
+val jar by tasks.getting(Jar::class) {
+    manifest.attributes.apply {
+        put("Implementation-Title", "Structurizr Macros")
+        put("Implementation-Version", project.version)
+        put("Built-By", System.getProperty("user.name"))
+        put("Built-JDK", System.getProperty("java.version"))
+        put("Built-Gradle", project.gradle.gradleVersion)
+    }
 }
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -78,14 +104,14 @@ tasks.test {
     useJUnitPlatform()
 
 }
-println(components.asMap)
+
 if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
     publishing {
         publications {
             create<MavenPublication>("mavenKotlin") {
                 from(components["kotlin"])
+                artifact(tasks["dokkaJar"])
                 artifact(tasks["sourcesJar"])
-                artifact(tasks["javadocJar"])
                 pom {
                     name.set("Structurizr Macros")
                     description.set("A collection of macros for Structurizr")
