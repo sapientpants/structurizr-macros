@@ -4,12 +4,20 @@ import com.structurizr.model.Tags
 import com.structurizr.view.Shape
 import com.structurizr.view.ViewSet
 
+/**
+ * Macros for styling diagrams.
+ */
 object Styling {
     const val DATABASE_TAG = "Database"
     const val MOBILE_DEVICE_PORTRAIT_TAG = "Mobile Device Portrait"
     const val SYSTEM_OF_INTEREST_TAG = "System of Interest"
     const val WEB_BROWSER_TAG = "Web Browser"
 
+    /**
+     * Apply the styling to the views.
+     *
+     * @params views the views
+     */
     fun apply(views: ViewSet) {
         val styles = views.configuration.styles
         styles.addElementStyle(Tags.ELEMENT)
