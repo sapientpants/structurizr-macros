@@ -9,7 +9,16 @@ import java.io.FileWriter
 import java.io.StringWriter
 import java.io.Writer
 
+/**
+ * Macros to render the workspace using PlantUML.
+ */
 object PlantUmlRenderer {
+    /**
+     * Renders the workspace using PlantUML to a set of PNG files.
+     *
+     * @params workspace the workspace to render
+     * @params outputDirectoryPath the path to the directory where the PNG images will be written
+     */
     fun render(workspace: Workspace, outputDirectoryPath: String) {
         val writer = StringWriter()
         render(workspace, writer)
@@ -27,6 +36,12 @@ object PlantUmlRenderer {
             }
     }
 
+    /**
+     * Renders the workspace using PlantUML to the supplied Writer.
+     *
+     * @params workspace the workspace to render
+     * @params writer where to write the rendered PlantUML
+     */
     fun render(workspace: Workspace, writer: Writer) {
         val plantUmlWriter = PlantUMLWriter()
 
