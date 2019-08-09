@@ -20,9 +20,11 @@ object StructurizrInitializer {
      * @see com.structurizr.model.Model
      * @see com.structurizr.Workspace
      */
-    fun init(workspaceName: String,
-             workspaceDescription: String,
-             enterpriseName: String): Workspace {
+    fun init(
+        workspaceName: String,
+        workspaceDescription: String,
+        enterpriseName: String
+    ): Workspace {
         val workspace = Workspace(workspaceName, workspaceDescription)
 
         val model = workspace.model

@@ -5,7 +5,6 @@ import com.structurizr.documentation.Arc42DocumentationTemplate
 import com.structurizr.model.SoftwareSystem
 import java.io.File
 
-
 object Arc42Documentation {
     private const val DEFAULT_ARC42_DIRECTORY_PATH = "./src/main/markdown/arc42"
 

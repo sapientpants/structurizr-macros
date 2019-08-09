@@ -1,13 +1,15 @@
-import java.net.URL
 import org.jetbrains.dokka.DokkaConfiguration
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.net.URL
 
 plugins {
     jacoco
     kotlin("jvm") version Dependencies.kotlinVersion
     `maven-publish`
     id("org.jetbrains.dokka") version "0.9.17"
+    id("org.jlleitschuh.gradle.ktlint") version "8.2.0"
+    id("org.jlleitschuh.gradle.ktlint-idea") version "8.2.0"
     signing
 }
 
@@ -34,6 +36,11 @@ val dokkaJar by tasks.creating(Jar::class) {
     from(dokka)
 }
 artifacts.add("archives", dokkaJar)
+
+ktlint {
+    verbose.set(true)
+    outputToConsole.set(true)
+}
 
 val sourcesJar by tasks.creating(Jar::class) {
     group = JavaBasePlugin.DOCUMENTATION_GROUP
