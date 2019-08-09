@@ -4,7 +4,18 @@ import com.structurizr.Workspace
 import com.structurizr.api.StructurizrClient
 import java.math.BigInteger
 
+/**
+ * Macros to render the workspace using Structurizr.
+ */
 object StructurizrRenderer {
+    /**
+     * Renders the workspace using Structurizr. The API key, API secret and workspace are retrieved
+     * using Utils.getProperty()
+     *
+     * @params workspace the workspace to render
+     * @see com.structurizr.api.StructurizrClient
+     * @see Utils.getProperty(String)
+     */
     fun render(workspace: Workspace) {
         val apiKey = Utils.getProperty("STRUCTURIZR_API_KEY")
         val apiSecret = Utils.getProperty("STRUCTURIZR_API_SECRET")

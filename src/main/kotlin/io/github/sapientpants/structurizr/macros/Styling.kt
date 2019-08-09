@@ -8,9 +8,26 @@ import com.structurizr.view.ViewSet
  * Macros for styling diagrams.
  */
 object Styling {
+    /**
+     * Tag to mark an element as a database.
+     */
     const val DATABASE_TAG = "Database"
+
+    /**
+     * Tag to mark an element as a mobile device that should be rendered in portrait orientation.
+     */
     const val MOBILE_DEVICE_PORTRAIT_TAG = "Mobile Device Portrait"
+
+    /**
+     * Tag to mark a SoftwareSystem as the system of interest.
+     *
+     * @see com.structurizr.model.SoftwareSystem
+     */
     const val SYSTEM_OF_INTEREST_TAG = "System of Interest"
+
+    /**
+     * Tag to mark an element as a web browser.
+     */
     const val WEB_BROWSER_TAG = "Web Browser"
 
     /**

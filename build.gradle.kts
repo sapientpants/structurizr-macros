@@ -1,3 +1,5 @@
+import java.net.URL
+import org.jetbrains.dokka.DokkaConfiguration
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -19,6 +21,10 @@ val dokka by tasks.getting(DokkaTask::class) {
     jdkVersion = 8
 
     includes = listOf("src/main/kotlin/packages.md")
+
+    externalDocumentationLink(delegateClosureOf<DokkaConfiguration.ExternalDocumentationLink.Builder> {
+        url = URL("https://docs.spring.io/spring-framework/docs/4.2.9.RELEASE/javadoc-api/")
+    })
 }
 
 val dokkaJar by tasks.creating(Jar::class) {
