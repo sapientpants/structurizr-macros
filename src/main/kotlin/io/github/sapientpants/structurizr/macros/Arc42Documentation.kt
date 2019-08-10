@@ -11,7 +11,6 @@ import java.io.File
  * Note: This will only work with the StructurizrRenderer
  *
  * @see StructurizrRenderer
- * @see https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown
  */
 object Arc42Documentation {
     private const val DEFAULT_ARC42_DIRECTORY_PATH = "./src/main/markdown/arc42"
@@ -21,7 +20,6 @@ object Arc42Documentation {
      * @params workspace the workspace to which the documentation is to be added
      * @params softwareSystem the system of interest
      * @see com.structurizr.documentation.Arc42DocumentationTemplate
-     * @see https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown
      */
     fun addToWorkspace(
         workspace: Workspace,
