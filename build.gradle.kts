@@ -91,31 +91,30 @@ tasks.jacocoTestReport {
     }
 }
 
-//tasks.jacocoTestCoverageVerification {
-//    violationRules {
-//        rule {
-//            limit {
-//                minimum = "0.5".toBigDecimal()
-//            }
-//        }
-//
-//        rule {
-//            enabled = false
-//            element = "CLASS"
-//            includes = listOf("io.github.sapientpants.*")
-//
-//            limit {
-//                counter = "LINE"
-//                value = "TOTALCOUNT"
-//                maximum = "0.3".toBigDecimal()
-//            }
-//        }
-//    }
-//}
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = "0.5".toBigDecimal()
+            }
+        }
+
+        rule {
+            enabled = false
+            element = "CLASS"
+            includes = listOf("io.github.sapientpants.*")
+
+            limit {
+                counter = "LINE"
+                value = "TOTALCOUNT"
+                maximum = "0.3".toBigDecimal()
+            }
+        }
+    }
+}
 
 tasks.test {
     useJUnitPlatform()
-
 }
 
 if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
@@ -173,7 +172,6 @@ if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) 
         sign(configurations.archives.get())
     }
 }
-
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {

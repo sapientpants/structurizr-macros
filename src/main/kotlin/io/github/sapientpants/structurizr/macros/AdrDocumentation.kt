@@ -15,7 +15,7 @@ object AdrDocumentation {
         addToWorkspace(workspace, softwareSystem, DEFAULT_ARD_DIRECTORY_PATH)
     }
 
-    fun addToWorkspace(
+    private fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem,
         ardDirectoryPath: String

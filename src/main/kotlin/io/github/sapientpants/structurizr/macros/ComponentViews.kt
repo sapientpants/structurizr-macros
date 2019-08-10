@@ -6,7 +6,7 @@ import com.structurizr.view.ViewSet
 object ComponentViews {
     fun addToViews(containers: Set<Container>, views: ViewSet) {
         containers
-            .filter { container -> !container.components.isEmpty() }
+            .filter { container -> container.components.isNotEmpty() }
             .forEach { container ->
                 val componentView = views.createComponentView(
                     container,

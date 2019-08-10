@@ -25,28 +25,28 @@ object SpringBootComponents {
      *
      * @see org.springframework.stereotype.Component
      */
-    const val SPRING_COMPONENT_TAG = "Spring Component"
+    private const val SPRING_COMPONENT_TAG = "Spring Component"
 
     /**
      * Tag for components created from Spring's @Controller annotation.
      *
      * @see org.springframework.stereotype.Controller
      */
-    const val SPRING_MVC_CONTROLLER_TAG = "Spring MVC Controller"
+    private const val SPRING_MVC_CONTROLLER_TAG = "Spring MVC Controller"
 
     /**
      * Tag for components created from Spring's @Service annotation.
      *
      * @see org.springframework.stereotype.Service
      */
-    const val SPRING_SERVICE_TAG = "Spring Service"
+    private const val SPRING_SERVICE_TAG = "Spring Service"
 
     /**
      * Tag for components created from Spring's @Repository annotation.
      *
      * @see org.springframework.stereotype.Repository
      */
-    const val SPRING_REPOSITORY_TAG = "Spring Repository"
+    private const val SPRING_REPOSITORY_TAG = "Spring Repository"
 
     /**
      * Finds Spring components and adds them to the specified container.

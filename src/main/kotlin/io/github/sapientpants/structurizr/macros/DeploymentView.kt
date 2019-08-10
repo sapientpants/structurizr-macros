@@ -11,7 +11,7 @@ object DeploymentView {
     ) {
         val deploymentView = views.createDeploymentView(
             softwareSystem,
-            "DeploymentView-${environment}",
+            "DeploymentView-$environment",
             "Deployment diagram for ${softwareSystem.name}"
         )
         deploymentView.environment = environment

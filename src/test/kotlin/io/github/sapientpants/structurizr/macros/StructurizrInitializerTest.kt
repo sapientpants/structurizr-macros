@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
 class StructurizrInitializerTest {
-    val enterpriseName = "My Enterprise"
-    val workspaceName = "My Enterprise Workspace"
-    val workspaceDescription = "My Enterprise Workspace description"
+    private val enterpriseName = "My Enterprise"
+    private val workspaceName = "My Enterprise Workspace"
+    private val workspaceDescription = "My Enterprise Workspace description"
 
     @Test
     fun `init() creates an enterprise`() {

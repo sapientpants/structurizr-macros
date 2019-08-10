@@ -15,7 +15,7 @@ object Arc42Documentation {
         addToWorkspace(workspace, softwareSystem, DEFAULT_ARC42_DIRECTORY_PATH)
     }
 
-    fun addToWorkspace(
+    private fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem,
         arc42DirectoryPath: String
