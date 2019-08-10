@@ -5,9 +5,26 @@ import com.structurizr.documentation.AdrToolsImporter
 import com.structurizr.model.SoftwareSystem
 import java.io.File
 
+/**
+ * Macro to include ADR documentation in the workspace.
+ *
+ * Note: This will only work with the StructurizrRenderer
+ *
+ * @see StructurizrRenderer
+ * @see https://adr.github.io/
+ * @see https://github.com/npryce/adr-tools
+ */
 object AdrDocumentation {
     private const val DEFAULT_ARD_DIRECTORY_PATH = "./src/main/markdown/adr"
 
+    /**
+     * Add ADR documentation to the workspace.
+     * @params workspace the workspace to which the documentation is to be added
+     * @params softwareSystem the system of interest
+     * @see com.structurizr.documentation.AdrToolsImporter
+     * @see https://adr.github.io/
+     * @see https://github.com/npryce/adr-tools
+     */
     fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem

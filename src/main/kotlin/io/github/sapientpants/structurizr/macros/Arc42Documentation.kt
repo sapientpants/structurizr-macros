@@ -5,9 +5,24 @@ import com.structurizr.documentation.Arc42DocumentationTemplate
 import com.structurizr.model.SoftwareSystem
 import java.io.File
 
+/**
+ * Macro to include Arc42 documentation in the workspace.
+ *
+ * Note: This will only work with the StructurizrRenderer
+ *
+ * @see StructurizrRenderer
+ * @see https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown
+ */
 object Arc42Documentation {
     private const val DEFAULT_ARC42_DIRECTORY_PATH = "./src/main/markdown/arc42"
 
+    /**
+     * Add Arc42 documentation to the workspace.
+     * @params workspace the workspace to which the documentation is to be added
+     * @params softwareSystem the system of interest
+     * @see com.structurizr.documentation.Arc42DocumentationTemplate
+     * @see https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown
+     */
     fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem

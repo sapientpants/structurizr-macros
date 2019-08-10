@@ -11,7 +11,7 @@ object SystemContextView {
     /**
      * Adds a system context view to the workspace.
      * @params softwareSystem the software system of interest
-     * @params views the set of views
+     * @params views the set of views to which the SystemContextView will be added
      */
     fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
         val systemContextView = views.createSystemContextView(

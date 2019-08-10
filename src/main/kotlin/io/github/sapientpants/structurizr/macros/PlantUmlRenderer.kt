@@ -40,7 +40,7 @@ object PlantUmlRenderer {
      * Renders the workspace using PlantUML to the supplied Writer.
      *
      * @params workspace the workspace to render
-     * @params writer where to write the rendered PlantUML
+     * @params writer where to write the rendered PlantUML text
      */
     private fun render(workspace: Workspace, writer: Writer) {
         val plantUmlWriter = PlantUMLWriter()
