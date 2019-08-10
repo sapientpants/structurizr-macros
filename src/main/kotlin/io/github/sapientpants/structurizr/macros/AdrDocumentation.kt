@@ -13,7 +13,7 @@ import java.io.File
  * @see StructurizrRenderer
  */
 object AdrDocumentation {
-    private const val DEFAULT_ARD_DIRECTORY_PATH = "./src/main/markdown/adr"
+    const val DEFAULT_ARD_DIRECTORY_PATH = "./src/main/markdown/adr"
 
     /**
      * Add ADR documentation to the workspace.

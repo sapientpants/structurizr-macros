@@ -13,7 +13,7 @@ import java.io.File
  * @see StructurizrRenderer
  */
 object Arc42Documentation {
-    private const val DEFAULT_ARC42_DIRECTORY_PATH = "./src/main/markdown/arc42"
+    const val DEFAULT_ARC42_DIRECTORY_PATH = "./src/main/markdown/arc42"
 
     /**
      * Add Arc42 documentation to the workspace.

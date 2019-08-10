@@ -11,24 +11,24 @@ object Styling {
     /**
      * Tag to mark an element as a database.
      */
-    private const val DATABASE_TAG = "Database"
+    const val DATABASE_TAG = "Database"
 
     /**
      * Tag to mark an element as a mobile device that should be rendered in portrait orientation.
      */
-    private const val MOBILE_DEVICE_PORTRAIT_TAG = "Mobile Device Portrait"
+    const val MOBILE_DEVICE_PORTRAIT_TAG = "Mobile Device Portrait"
 
     /**
      * Tag to mark a SoftwareSystem as the system of interest.
      *
      * @see com.structurizr.model.SoftwareSystem
      */
-    private const val SYSTEM_OF_INTEREST_TAG = "System of Interest"
+    const val SYSTEM_OF_INTEREST_TAG = "System of Interest"
 
     /**
      * Tag to mark an element as a web browser.
      */
-    private const val WEB_BROWSER_TAG = "Web Browser"
+    const val WEB_BROWSER_TAG = "Web Browser"
 
     /**
      * Apply the styling to the views.
