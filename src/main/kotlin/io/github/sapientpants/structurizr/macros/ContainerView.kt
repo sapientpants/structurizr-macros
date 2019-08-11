@@ -17,16 +17,22 @@ object ContainerView {
      * @see com.structurizr.view.ContainerView
      */
     fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
-        if (softwareSystem.containers.isEmpty()) {
+        addToViews(softwareSystem, views, emptySet<String>())
+    }
+
+    fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet, tags: Set<String>) {
+        val containers = Utils.filter(softwareSystem.containers, tags)
+        if (containers.isEmpty()) {
             return
         }
 
+        val tagLine = Utils.tagLine(tags)
         val containerView = views.createContainerView(
             softwareSystem,
             "Containers",
-            "Container diagram for ${softwareSystem.name}"
+            "Container diagram for ${softwareSystem.name}$tagLine"
         )
-        softwareSystem.containers
+        containers
             .forEach { container ->
                 containerView.add(container)
                 containerView.addNearestNeighbours(container)

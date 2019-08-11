@@ -19,7 +19,12 @@ object ContainerContextViews {
      * @params views the set of views to which the ContainerViews will be added
      */
     fun addToViews(containers: Set<Container>, views: ViewSet) {
-        containers.forEach { container ->
+        addToViews(containers, views, emptySet<String>())
+    }
+
+    fun addToViews(containers: Set<Container>, views: ViewSet, tags: Set<String>) {
+        val filteredContainers = Utils.filter(containers, tags)
+        filteredContainers.forEach { container ->
             val view = views.createContainerView(
                 container.softwareSystem,
                 "ContainerContext-${container.name}",

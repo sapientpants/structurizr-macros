@@ -18,15 +18,21 @@ object ComponentViews {
      * @see com.structurizr.view.ComponentView
      */
     fun addToViews(containers: Set<Container>, views: ViewSet) {
+        addToViews(containers, views, emptySet<String>())
+    }
+
+    fun addToViews(containers: Set<Container>, views: ViewSet, tags: Set<String>) {
+        val tagLine = Utils.tagLine(tags)
         containers
             .filter { container -> container.components.isNotEmpty() }
             .forEach { container ->
                 val componentView = views.createComponentView(
                     container,
                     "${container.name} components",
-                    "Components diagram for ${container.name}."
+                    "Components diagram for ${container.name}$tagLine."
                 )
-                container.components
+                val components = Utils.filter(container.components, tags)
+                components
                     .forEach { component ->
                         componentView.add(component)
                         componentView.addNearestNeighbours(component)
