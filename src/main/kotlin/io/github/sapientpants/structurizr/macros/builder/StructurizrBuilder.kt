@@ -17,7 +17,7 @@ object StructurizrBuilder {
         enterprise: String,
         workspaceName: String,
         workspaceDescription: String,
-        builder: Builder
+        modelBuilder: ModelBuilder
     ) {
 
         val workspace = StructurizrInitializer.init(
@@ -28,7 +28,7 @@ object StructurizrBuilder {
         val model = workspace.model
         val views = workspace.views
 
-        builder(workspace, model, views)
+        modelBuilder(model)
 
         model.addImplicitRelationships()
 
