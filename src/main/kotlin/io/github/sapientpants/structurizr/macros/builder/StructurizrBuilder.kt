@@ -3,7 +3,6 @@ package io.github.sapientpants.structurizr.macros.builder
 import io.github.sapientpants.structurizr.macros.AdrDocumentation
 import io.github.sapientpants.structurizr.macros.Arc42Documentation
 import io.github.sapientpants.structurizr.macros.ComponentViews
-import io.github.sapientpants.structurizr.macros.ContainerContextViews
 import io.github.sapientpants.structurizr.macros.ContainerView
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
 import io.github.sapientpants.structurizr.macros.StructurizrRenderer
@@ -45,8 +44,6 @@ object StructurizrBuilder {
         SystemContextView.addToViews(softwareSystem, views)
 
         ContainerView.addToViews(softwareSystem, views)
-
-        ContainerContextViews.addToViews(softwareSystem.containers, views)
 
         ComponentViews.addToViews(softwareSystem.containers, views)
 

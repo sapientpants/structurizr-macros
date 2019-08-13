@@ -1,7 +1,6 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.ComponentViews
-import io.github.sapientpants.structurizr.macros.ContainerContextViews
 import io.github.sapientpants.structurizr.macros.ContainerView
 import io.github.sapientpants.structurizr.macros.PlantUmlRenderer
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
@@ -54,8 +53,6 @@ object PlantUMLBuilder {
         SystemContextView.addToViews(softwareSystem, views)
 
         ContainerView.addToViews(softwareSystem, views)
-
-        ContainerContextViews.addToViews(softwareSystem.containers, views)
 
         ComponentViews.addToViews(softwareSystem.containers, views)
 
