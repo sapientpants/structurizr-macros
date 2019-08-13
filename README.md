@@ -14,7 +14,7 @@ Macros (or procedures if you prefer) to make it more convenient to create Struct
 Add the dependency to `build.gradle.kts`
 
 ```kotlin
-implementation("io.github.sapientpants:structurizr-macros:0.0.14")
+implementation("io.github.sapientpants:structurizr-macros:0.0.15-SNAPSHOT")
 ```
 
 ### Maven
