@@ -14,7 +14,7 @@ import io.github.sapientpants.structurizr.macros.Utils
 
 object StructurizrBuilder {
     fun build(
-        enterprise: String,
+        enterpriseName: String,
         workspaceName: String,
         workspaceDescription: String,
         modelBuilder: ModelBuilder
@@ -23,7 +23,7 @@ object StructurizrBuilder {
         val workspace = StructurizrInitializer.init(
             workspaceName,
             workspaceDescription,
-            enterprise
+            enterpriseName
         )
         val model = workspace.model
         val views = workspace.views
