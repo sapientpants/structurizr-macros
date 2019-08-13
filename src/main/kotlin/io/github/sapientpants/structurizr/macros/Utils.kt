@@ -7,6 +7,11 @@ import io.github.cdimascio.dotenv.Dotenv
  * Utility functions used throughout the macros.
  */
 object Utils {
+    fun filenamize(s: String, ext: String = ""): String {
+        return s.replace(Regex("[-\\s:/\\\\]"), "_")
+            .replace(Regex("_+"), "_") + ".$ext"
+    }
+
     /**
      * Filters elements with all of the supplied tags. When tags is empty, then all the
      * input elements are returned.

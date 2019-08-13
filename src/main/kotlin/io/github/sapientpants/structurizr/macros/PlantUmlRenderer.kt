@@ -2,12 +2,12 @@ package io.github.sapientpants.structurizr.macros
 
 import com.structurizr.Workspace
 import com.structurizr.io.plantuml.PlantUMLWriter
+import com.structurizr.view.View
 import net.sourceforge.plantuml.FileUtils
 import net.sourceforge.plantuml.SourceFileReader
 import java.io.File
 import java.io.FileWriter
 import java.io.StringWriter
-import java.io.Writer
 
 /**
  * Macros to render the workspace using PlantUML.
@@ -20,33 +20,49 @@ object PlantUmlRenderer {
      * @params outputDirectoryPath the path to the directory where the PNG images will be written
      */
     fun render(workspace: Workspace, outputDirectoryPath: String) {
-        val writer = StringWriter()
-        render(workspace, writer)
-
-        val plantUmlFile = File.createTempFile("plant-uml-renderer-", ".puml")
-        val fileWriter = FileWriter(plantUmlFile)
-        fileWriter.write(writer.toString())
-        fileWriter.close()
+        val views = workspace.views
 
         File(outputDirectoryPath).mkdirs()
 
-        val sourceFileReader = SourceFileReader(plantUmlFile)
-        sourceFileReader.generatedImages
-            .forEach { image ->
-                val outputFile = File(outputDirectoryPath + "/" + image.pngFile.name)
-                FileUtils.copyToFile(image.pngFile, outputFile)
-            }
+        views.systemLandscapeViews.forEach { view ->
+            renderView(view, outputDirectoryPath)
+        }
+
+        views.systemContextViews.forEach { view ->
+            renderView(view, outputDirectoryPath)
+        }
+
+        views.containerViews.forEach { view ->
+            renderView(view, outputDirectoryPath)
+        }
+
+        views.componentViews.forEach { view ->
+            renderView(view, outputDirectoryPath)
+        }
+
+        views.deploymentViews.forEach { view ->
+            renderView(view, outputDirectoryPath)
+        }
     }
 
-    /**
-     * Renders the workspace using PlantUML to the supplied Writer.
-     *
-     * @params workspace the workspace to render
-     * @params writer where to write the rendered PlantUML text
-     */
-    private fun render(workspace: Workspace, writer: Writer) {
-        val plantUmlWriter = PlantUMLWriter()
+    private fun renderView(
+        view: View,
+        outputDirectoryPath: String
+    ) {
+        val plantUMLWriter = PlantUMLWriter()
+        val viewPlantUML = StringWriter()
+        plantUMLWriter.write(view, viewPlantUML)
 
-        plantUmlWriter.write(workspace, writer)
+        val plantUmlFile = File.createTempFile("plant-uml-renderer-", ".puml")
+        val fileWriter = FileWriter(plantUmlFile)
+        fileWriter.write(viewPlantUML.toString())
+        fileWriter.close()
+
+        val filename = Utils.filenamize(view.name, "png")
+
+        val sourceFileReader = SourceFileReader(plantUmlFile)
+        val image = sourceFileReader.generatedImages.first()
+        val outputFile = File("$outputDirectoryPath/$filename")
+        FileUtils.copyToFile(image.pngFile, outputFile)
     }
 }
