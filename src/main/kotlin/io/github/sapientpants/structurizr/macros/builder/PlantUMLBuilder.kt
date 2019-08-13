@@ -1,0 +1,68 @@
+package io.github.sapientpants.structurizr.macros.builder
+
+import io.github.sapientpants.structurizr.macros.ComponentViews
+import io.github.sapientpants.structurizr.macros.ContainerContextViews
+import io.github.sapientpants.structurizr.macros.ContainerView
+import io.github.sapientpants.structurizr.macros.PlantUmlRenderer
+import io.github.sapientpants.structurizr.macros.StructurizrInitializer
+import io.github.sapientpants.structurizr.macros.Styling
+import io.github.sapientpants.structurizr.macros.SystemContextView
+import io.github.sapientpants.structurizr.macros.SystemLandscapeView
+import io.github.sapientpants.structurizr.macros.Utils
+
+object PlantUMLBuilder {
+    private const val DEFAULT_OUTPUT_PATH = "./build/plantuml"
+
+    fun build(
+        enterpriseName: String,
+        workspaceName: String,
+        workspaceDescription: String,
+        modelBuilder: ModelBuilder
+    ) {
+        build(enterpriseName, workspaceName, workspaceDescription, DEFAULT_OUTPUT_PATH, modelBuilder)
+    }
+
+    fun build(
+        enterpriseName: String,
+        workspaceName: String,
+        workspaceDescription: String,
+        outputPath: String,
+        modelBuilder: ModelBuilder
+    ) {
+        val workspace = StructurizrInitializer.init(
+            workspaceName,
+            workspaceDescription,
+            enterpriseName
+        )
+        val model = workspace.model
+        val views = workspace.views
+
+        modelBuilder(model)
+
+        model.addImplicitRelationships()
+
+        // Declare the diagrams to render
+
+        val softwareSystem =
+            Utils.filter(
+                model.softwareSystems,
+                setOf(Styling.SYSTEM_OF_INTEREST_TAG)
+            ).first()
+
+        SystemLandscapeView.addToViews(model, views)
+
+        SystemContextView.addToViews(softwareSystem, views)
+
+        ContainerView.addToViews(softwareSystem, views)
+
+        ContainerContextViews.addToViews(softwareSystem.containers, views)
+
+        ComponentViews.addToViews(softwareSystem.containers, views)
+
+        // Apply the style
+        Styling.apply(views)
+
+        // Render the diagrams
+        PlantUmlRenderer.render(workspace, outputPath)
+    }
+}

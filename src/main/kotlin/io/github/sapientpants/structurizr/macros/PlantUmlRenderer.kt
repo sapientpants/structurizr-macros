@@ -28,6 +28,8 @@ object PlantUmlRenderer {
         fileWriter.write(writer.toString())
         fileWriter.close()
 
+        File(outputDirectoryPath).mkdirs()
+
         val sourceFileReader = SourceFileReader(plantUmlFile)
         sourceFileReader.generatedImages
             .forEach { image ->
