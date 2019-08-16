@@ -29,8 +29,10 @@ before_install:
 jobs:
   include:
     - stage: scan
-      script: sonar-scanner
+      script:
+        - gradle build jacocoTestReport
+        - sonar-scanner
       if: branch = master
 
 script:
-  - gradle build jacocoTestReport
+  - gradle build
