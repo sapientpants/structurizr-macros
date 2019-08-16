@@ -30,20 +30,23 @@ object Styling {
      */
     const val WEB_BROWSER_TAG = "Web Browser"
 
+    private const val BLACK = "#000000"
+    private const val WHITE = "#FFFFFF"
+
     fun applyPlantUMLStyling(views: ViewSet) {
         val styles = views.configuration.styles
         styles.addElementStyle(Tags.ELEMENT)
-            .color("#ffffff")
+            .color(WHITE)
         styles.addElementStyle(Tags.SOFTWARE_SYSTEM)
-            .color("#000000")
+            .color(BLACK)
         styles.addElementStyle(SYSTEM_OF_INTEREST_TAG)
             .background("#1168bd")
-            .color("#ffffff")
+            .color(WHITE)
         styles.addElementStyle(Tags.CONTAINER)
             .background("#438dd5")
         styles.addElementStyle(Tags.COMPONENT)
             .background("#85bbf0")
-            .color("#000000")
+            .color(BLACK)
         styles.addElementStyle(Tags.PERSON)
             .shape(Shape.Person)
             .fontSize(22)
@@ -64,17 +67,17 @@ object Styling {
     fun applyStructurizrStyle(views: ViewSet) {
         val styles = views.configuration.styles
         styles.addElementStyle(Tags.ELEMENT)
-            .color("#ffffff")
+            .color(WHITE)
         styles.addElementStyle(Tags.SOFTWARE_SYSTEM)
-            .color("#000000")
+            .color(BLACK)
         styles.addElementStyle(SYSTEM_OF_INTEREST_TAG)
             .background("#1168bd")
-            .color("#ffffff")
+            .color(WHITE)
         styles.addElementStyle(Tags.CONTAINER)
             .background("#438dd5")
         styles.addElementStyle(Tags.COMPONENT)
             .background("#85bbf0")
-            .color("#000000")
+            .color(BLACK)
         styles.addElementStyle(Tags.PERSON)
             .background("#08427b")
             .shape(Shape.Person)
