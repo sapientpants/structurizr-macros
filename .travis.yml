@@ -33,4 +33,4 @@ jobs:
       if: branch = master
 
 script:
-  - gradle build
+  - gradle build jacocoTestReport
