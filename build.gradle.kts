@@ -80,6 +80,10 @@ dependencies {
     testImplementation(Dependencies.junitEngine)
 }
 
+tasks.test {
+    useJUnitPlatform()
+}
+
 jacoco {
     toolVersion = "0.8.4"
 }
@@ -111,10 +115,6 @@ tasks.jacocoTestCoverageVerification {
             }
         }
     }
-}
-
-tasks.test {
-    useJUnitPlatform()
 }
 
 if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
