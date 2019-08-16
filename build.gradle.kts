@@ -104,14 +104,13 @@ tasks.jacocoTestCoverageVerification {
         }
 
         rule {
-            enabled = false
             element = "CLASS"
             includes = listOf("io.github.sapientpants.*")
 
             limit {
                 counter = "LINE"
                 value = "TOTALCOUNT"
-                maximum = "0.3".toBigDecimal()
+                maximum = "100".toBigDecimal()
             }
         }
     }
