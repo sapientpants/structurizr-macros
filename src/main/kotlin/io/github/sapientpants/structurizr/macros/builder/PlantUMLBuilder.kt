@@ -57,7 +57,7 @@ object PlantUMLBuilder {
         ComponentViews.addToViews(softwareSystem.containers, views)
 
         // Apply the style
-        Styling.apply(views)
+        Styling.applyPlantUMLStyling(views)
 
         // Render the diagrams
         PlantUmlRenderer.render(workspace, outputPath)

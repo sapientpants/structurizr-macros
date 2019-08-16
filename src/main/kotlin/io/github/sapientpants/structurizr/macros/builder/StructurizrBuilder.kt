@@ -16,9 +16,10 @@ object StructurizrBuilder {
         enterpriseName: String,
         workspaceName: String,
         workspaceDescription: String,
+        includeAdr: Boolean = false,
+        includeArc42: Boolean = false,
         modelBuilder: ModelBuilder
     ) {
-
         val workspace = StructurizrInitializer.init(
             workspaceName,
             workspaceDescription,
@@ -47,12 +48,16 @@ object StructurizrBuilder {
 
         ComponentViews.addToViews(softwareSystem.containers, views)
 
-        AdrDocumentation.addToWorkspace(workspace, softwareSystem)
+        if (includeAdr) {
+            AdrDocumentation.addToWorkspace(workspace, softwareSystem)
+        }
 
-        Arc42Documentation.addToWorkspace(workspace, softwareSystem)
+        if (includeArc42) {
+            Arc42Documentation.addToWorkspace(workspace, softwareSystem)
+        }
 
         // Apply the style
-        Styling.apply(views)
+        Styling.applyStructurizrStyle(views)
 
         // Render the diagrams
         StructurizrRenderer.render(workspace)
