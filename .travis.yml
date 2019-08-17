@@ -19,6 +19,9 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.m2
 
+git:
+  depth: false
+
 before_install:
   - export GRADLE_VERSION=5.5.1
   - wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip
