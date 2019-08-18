@@ -7,9 +7,25 @@ import io.github.cdimascio.dotenv.Dotenv
  * Utility functions used throughout the macros.
  */
 object Utils {
+    /**
+     * Sanitizes the input string for use as a filename.
+     *
+     * @params s the string to sanitize
+     * @params ext the extension to add
+     * @returns the sanitized filename with extension
+     */
     fun filenamize(s: String, ext: String = ""): String {
-        return s.replace(Regex("[-\\s:/\\\\]"), "_")
-            .replace(Regex("_+"), "_") + ".$ext"
+        return if (s.isBlank()) {
+            ""
+        } else {
+            val extText = if (ext.isBlank()) {
+                ""
+            } else {
+                ".$ext"
+            }
+            s.replace(Regex("[-\\s:/\\\\]"), "_")
+                .replace(Regex("_+"), "_") + extText
+        }
     }
 
     /**
@@ -26,6 +42,12 @@ object Utils {
         }.toSet()
     }
 
+    /**
+     * Concatenates a series of tags together as the suffix of a diagram title.
+     *
+     * @params tags the tags to be concatenated
+     * @return the concatenated string of tags
+     */
     fun tagLine(tags: Set<String>): String {
         return if (tags.isNotEmpty()) {
             tags.joinToString(", ", " and tags (", ")")

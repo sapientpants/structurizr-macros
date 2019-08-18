@@ -31,6 +31,20 @@ class UtilsTest {
     }
 
     @Test
+    fun `filenameize returns an empty string when provided with one`() {
+        val expected = ""
+        val actual = Utils.filenamize("")
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun `filenameize returns a sanitized filename`() {
+        val expected = "My_filename.png"
+        val actual = Utils.filenamize("My: \t    filename", "png")
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun `filter returns all elements when no tags are provided`() {
         val element1 = TestElement()
         val element2 = TestElement()
@@ -71,5 +85,22 @@ class UtilsTest {
     @Test
     fun `getProperty returns null when the key is unknown`() {
         assertNull(Utils.getProperty("KEY_1393019301"))
+    }
+
+    @Test
+    fun `tagLine returns an empty string when no tags are provided`() {
+        val expected = ""
+        val actual = Utils.tagLine(emptySet())
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun `tagLine returns the expected string when tags are provided`() {
+        val tags = setOf<String>(
+            "tag1", "tag2"
+        )
+        val expected = " and tags (tag1, tag2)"
+        val actual = Utils.tagLine(tags)
+        assertEquals(expected, actual)
     }
 }
