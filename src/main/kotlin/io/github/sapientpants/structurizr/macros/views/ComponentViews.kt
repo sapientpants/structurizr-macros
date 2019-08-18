@@ -1,7 +1,8 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.views
 
 import com.structurizr.model.Container
 import com.structurizr.view.ViewSet
+import io.github.sapientpants.structurizr.macros.Utils
 
 /**
  * Macros to add container views.

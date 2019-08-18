@@ -1,7 +1,8 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.views
 
 import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet
+import io.github.sapientpants.structurizr.macros.Utils
 
 /**
  * Macros to add container views.
@@ -17,7 +18,11 @@ object ContainerView {
      * @see com.structurizr.view.ContainerView
      */
     fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
-        addToViews(softwareSystem, views, emptySet<String>())
+        addToViews(
+            softwareSystem,
+            views,
+            emptySet<String>()
+        )
     }
 
     fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet, tags: Set<String>) {

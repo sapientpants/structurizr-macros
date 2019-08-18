@@ -1,4 +1,4 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.views
 
 import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet

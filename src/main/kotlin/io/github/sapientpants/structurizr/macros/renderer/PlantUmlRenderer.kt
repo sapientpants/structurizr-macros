@@ -1,8 +1,9 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.renderer
 
 import com.structurizr.Workspace
 import com.structurizr.io.plantuml.PlantUMLWriter
 import com.structurizr.view.View
+import io.github.sapientpants.structurizr.macros.Utils
 import net.sourceforge.plantuml.FileUtils
 import net.sourceforge.plantuml.SourceFileReader
 import java.io.File

@@ -1,4 +1,4 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.documentation
 
 import com.structurizr.Workspace
 import com.structurizr.documentation.AdrToolsImporter
@@ -25,7 +25,11 @@ object AdrDocumentation {
         workspace: Workspace,
         softwareSystem: SoftwareSystem
     ) {
-        addToWorkspace(workspace, softwareSystem, DEFAULT_ARD_DIRECTORY_PATH)
+        addToWorkspace(
+            workspace,
+            softwareSystem,
+            DEFAULT_ARD_DIRECTORY_PATH
+        )
     }
 
     private fun addToWorkspace(

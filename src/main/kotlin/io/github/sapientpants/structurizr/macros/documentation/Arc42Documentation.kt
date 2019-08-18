@@ -1,4 +1,4 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.documentation
 
 import com.structurizr.Workspace
 import com.structurizr.documentation.Arc42DocumentationTemplate
@@ -13,7 +13,7 @@ import java.io.File
  * @see StructurizrRenderer
  */
 object Arc42Documentation {
-    const val DEFAULT_ARC42_DIRECTORY_PATH = "./src/main/markdown/arc42"
+    private const val DEFAULT_SOURCE_PATH = "./src/main/markdown/arc42"
 
     /**
      * Add Arc42 documentation to the workspace.
@@ -23,19 +23,12 @@ object Arc42Documentation {
      */
     fun addToWorkspace(
         workspace: Workspace,
-        softwareSystem: SoftwareSystem
-    ) {
-        addToWorkspace(workspace, softwareSystem, DEFAULT_ARC42_DIRECTORY_PATH)
-    }
-
-    private fun addToWorkspace(
-        workspace: Workspace,
         softwareSystem: SoftwareSystem,
-        arc42DirectoryPath: String
+        sourcePath: String = DEFAULT_SOURCE_PATH
     ) {
         val template = Arc42DocumentationTemplate(workspace)
 
-        val documentationRoot = File(arc42DirectoryPath)
+        val documentationRoot = File(sourcePath)
         template.addIntroductionAndGoalsSection(
             softwareSystem,
             File(documentationRoot, "01-introduction-and-goals.md")

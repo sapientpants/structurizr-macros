@@ -48,6 +48,7 @@ object Styling {
             .background("#85bbf0")
             .color(BLACK)
         styles.addElementStyle(Tags.PERSON)
+            .background(WHITE)
             .shape(Shape.Person)
             .fontSize(22)
 

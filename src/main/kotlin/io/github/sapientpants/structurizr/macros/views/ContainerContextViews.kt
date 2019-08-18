@@ -1,7 +1,8 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.views
 
 import com.structurizr.model.Container
 import com.structurizr.view.ViewSet
+import io.github.sapientpants.structurizr.macros.Utils
 
 /**
  * Macros to add container context views to a set of views. A container context view is similar to a
@@ -19,7 +20,11 @@ object ContainerContextViews {
      * @params views the set of views to which the ContainerViews will be added
      */
     fun addToViews(containers: Set<Container>, views: ViewSet) {
-        addToViews(containers, views, emptySet<String>())
+        addToViews(
+            containers,
+            views,
+            emptySet<String>()
+        )
     }
 
     fun addToViews(containers: Set<Container>, views: ViewSet, tags: Set<String>) {

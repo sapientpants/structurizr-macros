@@ -1,7 +1,8 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.renderer
 
 import com.structurizr.Workspace
 import com.structurizr.api.StructurizrClient
+import io.github.sapientpants.structurizr.macros.Utils
 import java.math.BigInteger
 
 /**

@@ -1,23 +1,26 @@
 package io.github.sapientpants.structurizr.macros.builder
 
-import io.github.sapientpants.structurizr.macros.AdrDocumentation
-import io.github.sapientpants.structurizr.macros.Arc42Documentation
-import io.github.sapientpants.structurizr.macros.ComponentViews
-import io.github.sapientpants.structurizr.macros.ContainerView
+import io.github.sapientpants.structurizr.macros.documentation.AdrDocumentation
+import io.github.sapientpants.structurizr.macros.documentation.Arc42Documentation
+import io.github.sapientpants.structurizr.macros.views.ComponentViews
+import io.github.sapientpants.structurizr.macros.views.ContainerView
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
-import io.github.sapientpants.structurizr.macros.StructurizrRenderer
+import io.github.sapientpants.structurizr.macros.renderer.StructurizrRenderer
 import io.github.sapientpants.structurizr.macros.Styling
-import io.github.sapientpants.structurizr.macros.SystemContextView
-import io.github.sapientpants.structurizr.macros.SystemLandscapeView
+import io.github.sapientpants.structurizr.macros.views.SystemContextView
+import io.github.sapientpants.structurizr.macros.views.SystemLandscapeView
 import io.github.sapientpants.structurizr.macros.Utils
+import io.github.sapientpants.structurizr.macros.documentation.ArchitectureDocumentation
+import io.github.sapientpants.structurizr.macros.documentation.StructurizrDocumentation
+import io.github.sapientpants.structurizr.macros.documentation.ViewpointsAndPerspectivesDocumentation
 
 object StructurizrBuilder {
     fun build(
         enterpriseName: String,
         workspaceName: String,
         workspaceDescription: String,
+        architectureDocumentation: ArchitectureDocumentation = ArchitectureDocumentation.NONE,
         includeAdr: Boolean = false,
-        includeArc42: Boolean = false,
         modelBuilder: ModelBuilder
     ) {
         val workspace = StructurizrInitializer.init(
@@ -52,8 +55,19 @@ object StructurizrBuilder {
             AdrDocumentation.addToWorkspace(workspace, softwareSystem)
         }
 
-        if (includeArc42) {
-            Arc42Documentation.addToWorkspace(workspace, softwareSystem)
+        when (architectureDocumentation) {
+            ArchitectureDocumentation.ARC_42 ->
+                Arc42Documentation.addToWorkspace(workspace, softwareSystem)
+
+            ArchitectureDocumentation.NONE -> {
+                // do nothing
+            }
+
+            ArchitectureDocumentation.STRUCTURIZR ->
+                StructurizrDocumentation.addToWorkspace(workspace, softwareSystem)
+
+            ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES ->
+                ViewpointsAndPerspectivesDocumentation.addToWorkspace(workspace, softwareSystem)
         }
 
         // Apply the style
