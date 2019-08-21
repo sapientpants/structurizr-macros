@@ -24,7 +24,8 @@ object Arc42Documentation {
     fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem,
-        sourcePath: String = DEFAULT_SOURCE_PATH
+        sourcePath: String = DEFAULT_SOURCE_PATH,
+        skipArchitectureDecisions: Boolean = false
     ) {
         val template = Arc42DocumentationTemplate(workspace)
 
@@ -46,10 +47,12 @@ object Arc42Documentation {
             softwareSystem,
             File(documentationRoot, "08-crosscutting-concepts.md")
         )
-        template.addArchitecturalDecisionsSection(
-            softwareSystem,
-            File(documentationRoot, "09-architecture-decisions.md")
-        )
+        if (!skipArchitectureDecisions) {
+            template.addArchitecturalDecisionsSection(
+                softwareSystem,
+                File(documentationRoot, "09-architecture-decisions.md")
+            )
+        }
         template.addRisksAndTechnicalDebtSection(
             softwareSystem,
             File(documentationRoot, "10-quality-requirements.md")

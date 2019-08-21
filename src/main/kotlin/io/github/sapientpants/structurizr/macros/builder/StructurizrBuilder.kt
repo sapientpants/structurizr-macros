@@ -20,7 +20,7 @@ object StructurizrBuilder {
         workspaceName: String,
         workspaceDescription: String,
         architectureDocumentation: ArchitectureDocumentation = ArchitectureDocumentation.NONE,
-        includeAdr: Boolean = false,
+        includeADR: Boolean = false,
         modelBuilder: ModelBuilder
     ) {
         val workspace = StructurizrInitializer.init(
@@ -51,20 +51,28 @@ object StructurizrBuilder {
 
         ComponentViews.addToViews(softwareSystem.containers, views)
 
-        if (includeAdr) {
+        if (includeADR) {
             AdrDocumentation.addToWorkspace(workspace, softwareSystem)
         }
 
         when (architectureDocumentation) {
             ArchitectureDocumentation.ARC_42 ->
-                Arc42Documentation.addToWorkspace(workspace, softwareSystem)
+                Arc42Documentation.addToWorkspace(
+                    workspace,
+                    softwareSystem,
+                    skipArchitectureDecisions = includeADR
+                )
 
             ArchitectureDocumentation.NONE -> {
                 // do nothing
             }
 
             ArchitectureDocumentation.STRUCTURIZR ->
-                StructurizrDocumentation.addToWorkspace(workspace, softwareSystem)
+                StructurizrDocumentation.addToWorkspace(
+                    workspace,
+                    softwareSystem,
+                    skipDecisionLog = includeADR
+                )
 
             ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES ->
                 ViewpointsAndPerspectivesDocumentation.addToWorkspace(workspace, softwareSystem)

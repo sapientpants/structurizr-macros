@@ -24,7 +24,8 @@ object StructurizrDocumentation {
     fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem,
-        sourcePath: String = DEFAULT_SOURCE_PATH
+        sourcePath: String = DEFAULT_SOURCE_PATH,
+        skipDecisionLog: Boolean = false
     ) {
         val template = StructurizrDocumentationTemplate(workspace)
 
@@ -46,6 +47,8 @@ object StructurizrDocumentation {
             File(documentationRoot, "10-development-environment.md")
         )
         template.addOperationAndSupportSection(softwareSystem, File(documentationRoot, "11-operation-and-support.md"))
-        template.addDecisionLogSection(softwareSystem, File(documentationRoot, "12-decision-log.md"))
+        if (!skipDecisionLog) {
+            template.addDecisionLogSection(softwareSystem, File(documentationRoot, "12-decision-log.md"))
+        }
     }
 }
