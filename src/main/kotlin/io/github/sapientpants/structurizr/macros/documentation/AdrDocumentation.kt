@@ -13,7 +13,7 @@ import java.io.File
  * @see StructurizrRenderer
  */
 object AdrDocumentation {
-    const val DEFAULT_ARD_DIRECTORY_PATH = "./src/main/markdown/adr"
+    private const val DEFAULT_ARD_DIRECTORY_PATH = "./src/main/markdown/adr"
 
     /**
      * Add ADR documentation to the workspace.
@@ -23,19 +23,8 @@ object AdrDocumentation {
      */
     fun addToWorkspace(
         workspace: Workspace,
-        softwareSystem: SoftwareSystem
-    ) {
-        addToWorkspace(
-            workspace,
-            softwareSystem,
-            DEFAULT_ARD_DIRECTORY_PATH
-        )
-    }
-
-    private fun addToWorkspace(
-        workspace: Workspace,
         softwareSystem: SoftwareSystem,
-        ardDirectoryPath: String
+        ardDirectoryPath: String = DEFAULT_ARD_DIRECTORY_PATH
     ) {
         val adrDirectory = File(ardDirectoryPath)
 
