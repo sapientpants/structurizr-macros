@@ -153,9 +153,11 @@ publishing {
                     val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
                     val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
                     url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
-                    credentials {
-                        username = extra["maven.publish.username"] as String
-                        password = extra["maven.publish.password"] as String
+                    if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
+                        credentials {
+                            username = extra["maven.publish.username"] as String
+                            password = extra["maven.publish.password"] as String
+                        }
                     }
                 }
             } else {
@@ -165,8 +167,9 @@ publishing {
     }
 }
 
-if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
-    signing {
+
+signing {
+    if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
         useGpgCmd()
         setRequired({
             (project.extra["isReleaseVersion"] as Boolean) && gradle.taskGraph.hasTask("uploadArchives")
