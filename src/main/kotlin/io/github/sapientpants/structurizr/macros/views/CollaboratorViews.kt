@@ -2,7 +2,6 @@ package io.github.sapientpants.structurizr.macros.views
 
 import com.structurizr.model.Container
 import com.structurizr.model.Element
-import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Utils
 

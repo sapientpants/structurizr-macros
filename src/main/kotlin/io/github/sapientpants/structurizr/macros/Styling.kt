@@ -2,7 +2,6 @@ package io.github.sapientpants.structurizr.macros
 
 import com.structurizr.view.Shape
 import com.structurizr.view.ViewSet
-import io.github.sapientpants.structurizr.macros.Tags
 
 /**
  * Macros for styling diagrams.
