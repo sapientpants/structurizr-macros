@@ -167,7 +167,6 @@ publishing {
     }
 }
 
-
 signing {
     if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
         useGpgCmd()
