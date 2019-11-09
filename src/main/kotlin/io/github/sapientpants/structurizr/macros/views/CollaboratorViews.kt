@@ -1,6 +1,8 @@
 package io.github.sapientpants.structurizr.macros.views
 
 import com.structurizr.model.Container
+import com.structurizr.model.Element
+import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Utils
 
@@ -13,29 +15,28 @@ import io.github.sapientpants.structurizr.macros.Utils
  * discuss the world from the perspective of a given container.
  * @see com.structurizr.view.ContainerView
  */
-object ContainerContextViews {
+object CollaboratorViews {
     /**
-     * Adds a container context view for each of the supplied containers to a set of views.
-     * @params containers the containers of interest
+     * Adds collaborator views for each of the supplied elements to a set of views.
+     * @params elements the elements of interest
+     * @params tags the tags to use to filter the given elements
      * @params views the set of views to which the ContainerViews will be added
      */
-    fun addToViews(containers: Set<Container>, views: ViewSet) {
-        addToViews(
-            containers,
-            views,
-            emptySet<String>()
-        )
+    fun <T : Element> addToViews(elements: Set<T>, views: ViewSet, tags: Set<String> = emptySet()) {
+        val filteredElements = Utils.filter(elements, tags)
+        filteredElements.forEach { element ->
+            when (element) {
+                is Container -> createContainerCollaboratorView(element, views)
+            }
+        }
     }
 
-    fun addToViews(containers: Set<Container>, views: ViewSet, tags: Set<String>) {
-        val filteredContainers = Utils.filter(containers, tags)
-        filteredContainers.forEach { container ->
-            val view = views.createContainerView(
+    private fun createContainerCollaboratorView(container: Container, views: ViewSet) {
+        val view = views.createContainerView(
                 container.softwareSystem,
-                "ContainerContext-${container.name}",
-                "Container context diagram for ${container.name}"
-            )
-            view.addNearestNeighbours(container)
-        }
+                "ContainerCollaborators-${container.name}",
+                "Container collaborator diagram for ${container.name}"
+        )
+        view.addNearestNeighbours(container)
     }
 }
