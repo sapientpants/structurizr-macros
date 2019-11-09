@@ -1,18 +1,18 @@
 package io.github.sapientpants.structurizr.macros.builder
 
+import io.github.sapientpants.structurizr.macros.StructurizrInitializer
+import io.github.sapientpants.structurizr.macros.Styling
+import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.documentation.AdrDocumentation
 import io.github.sapientpants.structurizr.macros.documentation.Arc42Documentation
-import io.github.sapientpants.structurizr.macros.views.ComponentViews
-import io.github.sapientpants.structurizr.macros.views.ContainerView
-import io.github.sapientpants.structurizr.macros.StructurizrInitializer
-import io.github.sapientpants.structurizr.macros.renderer.StructurizrRenderer
-import io.github.sapientpants.structurizr.macros.Styling
-import io.github.sapientpants.structurizr.macros.views.SystemContextView
-import io.github.sapientpants.structurizr.macros.views.SystemLandscapeView
-import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.documentation.ArchitectureDocumentation
 import io.github.sapientpants.structurizr.macros.documentation.StructurizrDocumentation
 import io.github.sapientpants.structurizr.macros.documentation.ViewpointsAndPerspectivesDocumentation
+import io.github.sapientpants.structurizr.macros.renderer.StructurizrRenderer
+import io.github.sapientpants.structurizr.macros.views.ComponentViews
+import io.github.sapientpants.structurizr.macros.views.ContainerView
+import io.github.sapientpants.structurizr.macros.views.SystemContextView
+import io.github.sapientpants.structurizr.macros.views.SystemLandscapeView
 
 object StructurizrBuilder {
     fun build(

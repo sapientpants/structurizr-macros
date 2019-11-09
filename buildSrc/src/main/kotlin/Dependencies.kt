@@ -1,10 +1,12 @@
 object Dependencies {
+    const val dokkaVersion = "0.9.17"
     private const val dotEnvVersion = "5.1.0"
     private const val junitVersion = "5.5.+"
-    const val kotlinVersion = "1.3.40"
+    const val kotlinVersion = "1.3.50"
+    const val ktlintVersion = "9.1.0"
     private const val plantUmlVersion = "1.2019.8"
     private const val slf4jVersion = "1.7.26"
-    private const val structurizrVersion = "1.2.0"
+    private const val structurizrVersion = "1.3.1"
 
     const val dotEnv = "io.github.cdimascio:java-dotenv:$dotEnvVersion"
     const val junitApi = "org.junit.jupiter:junit-jupiter-api:$junitVersion"

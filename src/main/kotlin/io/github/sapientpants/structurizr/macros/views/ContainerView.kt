@@ -37,6 +37,7 @@ object ContainerView {
             "Containers",
             "Container diagram for ${softwareSystem.name}$tagLine"
         )
+
         containers
             .forEach { container ->
                 containerView.add(container)

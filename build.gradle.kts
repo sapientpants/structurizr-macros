@@ -1,15 +1,15 @@
+import java.net.URL
 import org.jetbrains.dokka.DokkaConfiguration
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.net.URL
 
 plugins {
     jacoco
     kotlin("jvm") version Dependencies.kotlinVersion
     `maven-publish`
-    id("org.jetbrains.dokka") version "0.9.17"
-    id("org.jlleitschuh.gradle.ktlint") version "8.2.0"
-    id("org.jlleitschuh.gradle.ktlint-idea") version "8.2.0"
+    id("org.jetbrains.dokka") version Dependencies.dokkaVersion
+    id("org.jlleitschuh.gradle.ktlint") version Dependencies.ktlintVersion
+    id("org.jlleitschuh.gradle.ktlint-idea") version Dependencies.ktlintVersion
     signing
 }
 
