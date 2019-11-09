@@ -2,9 +2,6 @@
 /.gradle
 /.idea
 /build
-/gradle
 /gradle.properties
-/gradlew
-/gradlew.bat
 /out
 /structurizr-*.json
