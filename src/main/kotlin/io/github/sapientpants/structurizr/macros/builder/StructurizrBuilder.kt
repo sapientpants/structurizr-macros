@@ -2,6 +2,7 @@ package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
 import io.github.sapientpants.structurizr.macros.Styling
+import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.documentation.AdrDocumentation
 import io.github.sapientpants.structurizr.macros.documentation.Arc42Documentation
@@ -40,7 +41,7 @@ object StructurizrBuilder {
         val softwareSystem =
             Utils.filter(
                 model.softwareSystems,
-                setOf(Styling.SYSTEM_OF_INTEREST_TAG)
+                setOf(Tags.SYSTEM_OF_INTEREST)
             ).first()
 
         SystemLandscapeView.addToViews(model, views)
