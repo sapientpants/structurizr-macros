@@ -1,10 +1,10 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
-import io.github.sapientpants.structurizr.macros.Styling
 import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.renderer.PlantUmlRenderer
+import io.github.sapientpants.structurizr.macros.styles.PlantUMLStyle
 import io.github.sapientpants.structurizr.macros.views.ComponentViews
 import io.github.sapientpants.structurizr.macros.views.ContainerView
 import io.github.sapientpants.structurizr.macros.views.SystemContextView
@@ -59,7 +59,8 @@ object PlantUMLBuilder {
         ComponentViews.addToViews(softwareSystem.containers, views)
 
         // Apply the style
-        Styling.applyPlantUMLStyling(views)
+        val style = PlantUMLStyle()
+        style.applyToViews(views)
 
         // Render the diagrams
         PlantUmlRenderer.render(workspace, outputPath)

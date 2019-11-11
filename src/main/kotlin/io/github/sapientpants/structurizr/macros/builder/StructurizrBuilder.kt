@@ -1,7 +1,6 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
-import io.github.sapientpants.structurizr.macros.Styling
 import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.documentation.AdrDocumentation
@@ -10,6 +9,7 @@ import io.github.sapientpants.structurizr.macros.documentation.ArchitectureDocum
 import io.github.sapientpants.structurizr.macros.documentation.StructurizrDocumentation
 import io.github.sapientpants.structurizr.macros.documentation.ViewpointsAndPerspectivesDocumentation
 import io.github.sapientpants.structurizr.macros.renderer.StructurizrRenderer
+import io.github.sapientpants.structurizr.macros.styles.StructurizrStyle
 import io.github.sapientpants.structurizr.macros.views.ComponentViews
 import io.github.sapientpants.structurizr.macros.views.ContainerView
 import io.github.sapientpants.structurizr.macros.views.SystemContextView
@@ -81,7 +81,8 @@ object StructurizrBuilder {
         }
 
         // Apply the style
-        Styling.applyStructurizrStyle(views)
+        val style = StructurizrStyle()
+        style.applyToViews(views)
 
         // Render the diagrams
         StructurizrRenderer.render(workspace)
