@@ -42,7 +42,8 @@ object StructurizrBuilder {
             Utils.filter(
                 model.softwareSystems,
                 setOf(Tags.SYSTEM_OF_INTEREST)
-            ).first()
+            ).firstOrNull()
+                ?: return
 
         SystemLandscapeView.addToViews(model, views)
 
