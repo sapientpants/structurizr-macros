@@ -23,8 +23,8 @@ object StructurizrBuilder {
         workspaceDescription: String,
         architectureDocumentation: ArchitectureDocumentation = ArchitectureDocumentation.NONE,
         includeADR: Boolean = false,
-        modelBuilder: ModelBuilder,
-        style: Style = StructurizrStyle()
+        style: Style = StructurizrStyle(),
+        modelBuilder: ModelBuilder
     ) {
         val workspace = StructurizrInitializer.init(
             workspaceName,

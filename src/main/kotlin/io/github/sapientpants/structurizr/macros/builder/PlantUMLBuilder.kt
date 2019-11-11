@@ -18,16 +18,16 @@ object PlantUMLBuilder {
         enterpriseName: String,
         workspaceName: String,
         workspaceDescription: String,
-        modelBuilder: ModelBuilder,
-        style: Style = PlantUMLStyle()
+        style: Style = PlantUMLStyle(),
+        modelBuilder: ModelBuilder
     ) {
         build(
             enterpriseName,
             workspaceName,
             workspaceDescription,
             DEFAULT_OUTPUT_PATH,
-            modelBuilder,
-            style
+            style,
+            modelBuilder
         )
     }
 
@@ -36,8 +36,8 @@ object PlantUMLBuilder {
         workspaceName: String,
         workspaceDescription: String,
         outputPath: String,
-        modelBuilder: ModelBuilder,
-        style: Style = PlantUMLStyle()
+        style: Style = PlantUMLStyle(),
+        modelBuilder: ModelBuilder
     ) {
         val workspace = StructurizrInitializer.init(
             workspaceName,
