@@ -116,7 +116,6 @@ tasks.jacocoTestCoverageVerification {
     }
 }
 
-
 publishing {
     publications {
         create<MavenPublication>("mavenKotlin") {
