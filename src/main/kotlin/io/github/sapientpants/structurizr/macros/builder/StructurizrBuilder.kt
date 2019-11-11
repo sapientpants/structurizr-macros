@@ -10,6 +10,7 @@ import io.github.sapientpants.structurizr.macros.documentation.StructurizrDocume
 import io.github.sapientpants.structurizr.macros.documentation.ViewpointsAndPerspectivesDocumentation
 import io.github.sapientpants.structurizr.macros.renderer.StructurizrRenderer
 import io.github.sapientpants.structurizr.macros.styles.StructurizrStyle
+import io.github.sapientpants.structurizr.macros.styles.Style
 import io.github.sapientpants.structurizr.macros.views.ComponentViews
 import io.github.sapientpants.structurizr.macros.views.ContainerView
 import io.github.sapientpants.structurizr.macros.views.SystemContextView
@@ -22,7 +23,8 @@ object StructurizrBuilder {
         workspaceDescription: String,
         architectureDocumentation: ArchitectureDocumentation = ArchitectureDocumentation.NONE,
         includeADR: Boolean = false,
-        modelBuilder: ModelBuilder
+        modelBuilder: ModelBuilder,
+        style: Style = StructurizrStyle()
     ) {
         val workspace = StructurizrInitializer.init(
             workspaceName,
@@ -81,7 +83,6 @@ object StructurizrBuilder {
         }
 
         // Apply the style
-        val style = StructurizrStyle()
         style.applyToViews(views)
 
         // Render the diagrams

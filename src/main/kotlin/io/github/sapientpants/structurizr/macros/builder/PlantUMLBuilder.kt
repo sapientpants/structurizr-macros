@@ -5,6 +5,7 @@ import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.renderer.PlantUmlRenderer
 import io.github.sapientpants.structurizr.macros.styles.PlantUMLStyle
+import io.github.sapientpants.structurizr.macros.styles.Style
 import io.github.sapientpants.structurizr.macros.views.ComponentViews
 import io.github.sapientpants.structurizr.macros.views.ContainerView
 import io.github.sapientpants.structurizr.macros.views.SystemContextView
@@ -17,9 +18,17 @@ object PlantUMLBuilder {
         enterpriseName: String,
         workspaceName: String,
         workspaceDescription: String,
-        modelBuilder: ModelBuilder
+        modelBuilder: ModelBuilder,
+        style: Style = PlantUMLStyle()
     ) {
-        build(enterpriseName, workspaceName, workspaceDescription, DEFAULT_OUTPUT_PATH, modelBuilder)
+        build(
+            enterpriseName,
+            workspaceName,
+            workspaceDescription,
+            DEFAULT_OUTPUT_PATH,
+            modelBuilder,
+            style
+        )
     }
 
     fun build(
@@ -27,7 +36,8 @@ object PlantUMLBuilder {
         workspaceName: String,
         workspaceDescription: String,
         outputPath: String,
-        modelBuilder: ModelBuilder
+        modelBuilder: ModelBuilder,
+        style: Style = PlantUMLStyle()
     ) {
         val workspace = StructurizrInitializer.init(
             workspaceName,
@@ -59,7 +69,6 @@ object PlantUMLBuilder {
         ComponentViews.addToViews(softwareSystem.containers, views)
 
         // Apply the style
-        val style = PlantUMLStyle()
         style.applyToViews(views)
 
         // Render the diagrams
