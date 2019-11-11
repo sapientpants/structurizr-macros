@@ -10,7 +10,7 @@ object Styling {
     private const val BLACK = "#000000"
     private const val WHITE = "#ffffff"
 
-    private const val PERSON_BACKGROUND = "#ee8002"
+    private const val PERSON_BACKGROUND = "#f48f05"
     private const val SYSTEM_OF_INTEREST_BACKGROUND = "#0082ff"
     private const val CONTAINER_BACKGROUND = "#1fa2ff"
     private const val COMPONENT_BACKGROUND = "#8ac8ff"
