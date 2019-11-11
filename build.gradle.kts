@@ -116,56 +116,58 @@ tasks.jacocoTestCoverageVerification {
     }
 }
 
-if (extra.has("maven.publish.username") && extra.has("maven.publish.password")) {
-    publishing {
-        publications {
-            create<MavenPublication>("mavenKotlin") {
-                from(components["kotlin"])
-                artifact(tasks["dokkaJar"])
-                artifact(tasks["sourcesJar"])
-                pom {
-                    name.set("Structurizr Macros")
-                    description.set("A collection of macros for Structurizr")
-                    url.set("https://github.com/sapientpants/structurizr-macros")
-                    licenses {
-                        license {
-                            name.set("The MIT License")
-                            url.set("http://www.opensource.org/licenses/MIT")
-                        }
-                    }
-                    developers {
-                        developer {
-                            id.set("sapientpants")
-                            name.set("Marc Tremblay")
-                            email.set("marc.tremblay@gmail.com")
-                        }
-                    }
-                    scm {
-                        connection.set("scm:git:git@github.com:sapientpants/architecture-documentation-macros.git")
-                        developerConnection.set("scm:git:git@github.com:sapientpants/architecture-documentation-macros.git")
-                        url.set("https://github.com/sapientpants/structurizr-macros")
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenKotlin") {
+            from(components["kotlin"])
+            artifact(tasks["dokkaJar"])
+            artifact(tasks["sourcesJar"])
+            pom {
+                name.set("Structurizr Macros")
+                description.set("A collection of macros for Structurizr")
+                url.set("https://github.com/sapientpants/structurizr-macros")
+                licenses {
+                    license {
+                        name.set("The MIT License")
+                        url.set("http://www.opensource.org/licenses/MIT")
                     }
                 }
-            }
-
-            repositories {
-                maven {
-                    val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-                    val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-                    url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
-                    credentials {
-                        username = extra["maven.publish.username"] as String
-                        password = extra["maven.publish.password"] as String
+                developers {
+                    developer {
+                        id.set("sapientpants")
+                        name.set("Marc Tremblay")
+                        email.set("marc.tremblay@gmail.com")
                     }
+                }
+                scm {
+                    connection.set("scm:git:git@github.com:sapientpants/architecture-documentation-macros.git")
+                    developerConnection.set("scm:git:git@github.com:sapientpants/architecture-documentation-macros.git")
+                    url.set("https://github.com/sapientpants/structurizr-macros")
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+                url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+                credentials {
+                    username = project.findProperty("maven.publish.username") as String?
+                    password = project.findProperty("maven.publish.password") as String?
                 }
             }
         }
     }
+}
 
+if (project.hasProperty("signing.gnupg.keyName") &&
+        project.hasProperty("signing.gnupg.passphrase")) {
     signing {
         useGpgCmd()
         setRequired({
-            (project.extra["isReleaseVersion"] as Boolean) && gradle.taskGraph.hasTask("uploadArchives")
+            (project.properties["isReleaseVersion"] as Boolean) && gradle.taskGraph.hasTask("uploadArchives")
         })
         sign(publishing.publications["mavenKotlin"])
         sign(configurations.archives.get())
