@@ -63,9 +63,7 @@ object PlantUmlRenderer {
 
         val sourceFileReader = SourceFileReader(plantUmlFile)
         val image = sourceFileReader.generatedImages.first()
-        val outputDir = File(outputDirectoryPath)
-        outputDir.mkdirs()
-        val outputFile = File(outputDir, filename)
+        val outputFile = File("$outputDirectoryPath/$filename")
         FileUtils.copyToFile(image.pngFile, outputFile)
     }
 }
