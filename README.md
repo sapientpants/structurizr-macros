@@ -9,6 +9,21 @@ Macros (or procedures if you prefer) to make it more convenient to create Struct
 
 ## Installation
 
+### Java
+
+Java >= 8 and <= 12
+
+```sh
+brew tap AdoptOpenJDK/openjdk
+brew cask install adoptopenjdk-12
+```
+
+### Graphviz
+
+Required if you will be rendering diagrams using PlantUML.
+
+`brew install graphviz`
+
 ### Gradle
 
 Add the dependency to `build.gradle.kts`
@@ -29,9 +44,9 @@ Add the dependency to `pom.xml`
 </dependency>
 ```
 
-## Usage
-
 ### Architecture Decision Records
+
+If you want to use ADRs, then install adr-tools. Only works with the StructurizrRenderer.
 
 `brew install adr-tools`
 
@@ -39,9 +54,41 @@ Add the dependency to `pom.xml`
 
 ### Arc42 Templates
 
+If you want to use Arc42, then install the Arc42 templates. Only works with the StructurizrRenderer.
+
 `mkdir -p ./src/main/markdown/arc42`
 
 Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown)
+
+### Arc42 Templates
+
+If you want to use the Arc42 architecture documentation format, then install the templates. Only works with the StructurizrRenderer.
+
+`mkdir -p ./src/main/markdown/arc42`
+
+Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown)
+
+### Structurizr Templates
+
+If you want to use the Structurizr architecture documentation format, then install the templates. Only works with the StructurizrRenderer.
+
+`mkdir -p ./src/main/markdown/arc42`
+
+Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/structurizr/markdown)
+
+### Viewpoints and Perspectives Templates
+
+If you want to use the Viewpoints and Perspectives architecture documentation format, then install the templates. Only works with the StructurizrRenderer.
+
+`mkdir -p ./src/main/markdown/arc42`
+
+Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/viewpointsandperspectives/markdown)
+
+## Usage
+
+### Examples
+
+See [https://github.com/sapientpants/structurizr-macros-examples](https://github.com/sapientpants/structurizr-macros-examples)
 
 ## License
 
