@@ -29,7 +29,7 @@ Required if you will be rendering diagrams using PlantUML.
 Add the dependency to `build.gradle.kts`
 
 ```kotlin
-implementation("io.github.sapientpants:structurizr-macros:0.0.27")
+implementation("io.github.sapientpants:structurizr-macros:0.0.28-SNAPSHOT")
 ```
 
 ### Maven
@@ -40,7 +40,7 @@ Add the dependency to `pom.xml`
 <dependency>
     <groupId>io.github.sapientpants</groupId>
     <artifactId>structurizr-macros</artifactId>
-    <version>0.0.27</version>
+    <version>0.0.28-SNAPSHOT</version>
 </dependency>
 ```
 
