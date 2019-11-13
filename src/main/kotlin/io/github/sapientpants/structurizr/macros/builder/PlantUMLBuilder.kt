@@ -20,7 +20,7 @@ object PlantUMLBuilder {
         workspaceName: String,
         workspaceDescription: String,
         style: Style = PlantUMLStyle(),
-        modelBuilder: ModelBuilder
+        modelAndViewsBuilder: ModelAndViewsBuilder
     ) {
         build(
             enterpriseName,
@@ -28,7 +28,7 @@ object PlantUMLBuilder {
             workspaceDescription,
             DEFAULT_OUTPUT_PATH,
             style,
-            modelBuilder
+            modelAndViewsBuilder
         )
     }
 
@@ -38,7 +38,7 @@ object PlantUMLBuilder {
         workspaceDescription: String,
         outputPath: String,
         style: Style = PlantUMLStyle(),
-        modelBuilder: ModelBuilder
+        modelAndViewsBuilder: ModelAndViewsBuilder
     ) {
         val workspace = StructurizrInitializer.init(
             workspaceName,
@@ -48,7 +48,7 @@ object PlantUMLBuilder {
         val model = workspace.model
         val views = workspace.views
 
-        modelBuilder(model)
+        modelAndViewsBuilder(model, views)
 
         model.addImplicitRelationships()
 
