@@ -13,6 +13,7 @@ import io.github.sapientpants.structurizr.macros.styles.StructurizrStyle
 import io.github.sapientpants.structurizr.macros.styles.Style
 import io.github.sapientpants.structurizr.macros.views.ComponentViews
 import io.github.sapientpants.structurizr.macros.views.ContainerView
+import io.github.sapientpants.structurizr.macros.views.DeploymentViews
 import io.github.sapientpants.structurizr.macros.views.SystemContextView
 import io.github.sapientpants.structurizr.macros.views.SystemLandscapeView
 
@@ -54,6 +55,8 @@ object StructurizrBuilder {
         ContainerView.addToViews(softwareSystem, views)
 
         ComponentViews.addToViews(softwareSystem.containers, views)
+
+        DeploymentViews.addToViews(softwareSystem, views)
 
         if (includeADR) {
             AdrDocumentation.addToWorkspace(workspace, softwareSystem)

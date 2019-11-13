@@ -8,6 +8,7 @@ import io.github.sapientpants.structurizr.macros.styles.PlantUMLStyle
 import io.github.sapientpants.structurizr.macros.styles.Style
 import io.github.sapientpants.structurizr.macros.views.ComponentViews
 import io.github.sapientpants.structurizr.macros.views.ContainerView
+import io.github.sapientpants.structurizr.macros.views.DeploymentViews
 import io.github.sapientpants.structurizr.macros.views.SystemContextView
 import io.github.sapientpants.structurizr.macros.views.SystemLandscapeView
 
@@ -67,6 +68,8 @@ object PlantUMLBuilder {
         ContainerView.addToViews(softwareSystem, views)
 
         ComponentViews.addToViews(softwareSystem.containers, views)
+
+        DeploymentViews.addToViews(softwareSystem, views)
 
         // Apply the style
         style.applyToViews(views)
