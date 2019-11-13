@@ -59,7 +59,7 @@ object PlantUmlRenderer {
         fileWriter.write(viewPlantUML.toString())
         fileWriter.close()
 
-        val filename = Utils.filenamize(view.name, "png")
+        val filename = Utils.filenamize(view.key, "png")
 
         val sourceFileReader = SourceFileReader(plantUmlFile)
         val image = sourceFileReader.generatedImages.first()
