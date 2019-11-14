@@ -20,6 +20,7 @@ object PlantUMLBuilder {
         workspaceName: String,
         workspaceDescription: String,
         outputPath: String = DEFAULT_OUTPUT_PATH,
+        addImplicitRelationships: Boolean = true,
         style: Style = PlantUMLStyle(),
         modelAndViewsBuilder: ModelAndViewsBuilder
     ) {
@@ -32,6 +33,10 @@ object PlantUMLBuilder {
         val views = workspace.views
 
         modelAndViewsBuilder(model, views)
+
+        if (addImplicitRelationships) {
+            model.addImplicitRelationships()
+        }
 
         // Declare the diagrams to render
 

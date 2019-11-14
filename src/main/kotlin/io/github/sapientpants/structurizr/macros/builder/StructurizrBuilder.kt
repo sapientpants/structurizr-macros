@@ -22,6 +22,7 @@ object StructurizrBuilder {
         enterpriseName: String,
         workspaceName: String,
         workspaceDescription: String,
+        addImplicitRelationships: Boolean = true,
         architectureDocumentation: ArchitectureDocumentation = ArchitectureDocumentation.NONE,
         includeADR: Boolean = false,
         style: Style = StructurizrStyle(),
@@ -36,6 +37,10 @@ object StructurizrBuilder {
         val views = workspace.views
 
         modelAndViewsBuilder(model, views)
+
+        if (addImplicitRelationships) {
+            model.addImplicitRelationships()
+        }
 
         // Declare the diagrams to render
 
