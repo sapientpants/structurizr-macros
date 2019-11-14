@@ -1,8 +1,6 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
-import io.github.sapientpants.structurizr.macros.Tags
-import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.renderer.PlantUmlRenderer
 import io.github.sapientpants.structurizr.macros.styles.PlantUMLStyle
 import io.github.sapientpants.structurizr.macros.styles.Style
@@ -40,22 +38,17 @@ object PlantUMLBuilder {
 
         // Declare the diagrams to render
 
-        val softwareSystem =
-            Utils.filter(
-                model.softwareSystems,
-                setOf(Tags.SYSTEM_OF_INTEREST)
-            ).firstOrNull()
-                ?: return
+        val systemOfInterest = BuilderUtils.systemOfInterest(model)
 
         SystemLandscapeView.addToViews(model, views)
 
-        SystemContextView.addToViews(softwareSystem, views)
+        SystemContextView.addToViews(systemOfInterest, views)
 
-        ContainerView.addToViews(softwareSystem, views)
+        ContainerView.addToViews(systemOfInterest, views)
 
-        ComponentViews.addToViews(softwareSystem.containers, views)
+        ComponentViews.addToViews(systemOfInterest.containers, views)
 
-        DeploymentViews.addToViews(softwareSystem, views)
+        DeploymentViews.addToViews(systemOfInterest, views)
 
         // Apply the style
         style.applyToViews(views)

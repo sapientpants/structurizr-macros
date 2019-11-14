@@ -1,8 +1,6 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
-import io.github.sapientpants.structurizr.macros.Tags
-import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.documentation.AdrDocumentation
 import io.github.sapientpants.structurizr.macros.documentation.Arc42Documentation
 import io.github.sapientpants.structurizr.macros.documentation.ArchitectureDocumentation
@@ -44,32 +42,27 @@ object StructurizrBuilder {
 
         // Declare the diagrams to render
 
-        val softwareSystem =
-            Utils.filter(
-                model.softwareSystems,
-                setOf(Tags.SYSTEM_OF_INTEREST)
-            ).firstOrNull()
-                ?: return
+        val systemOfInterest = BuilderUtils.systemOfInterest(model)
 
         SystemLandscapeView.addToViews(model, views)
 
-        SystemContextView.addToViews(softwareSystem, views)
+        SystemContextView.addToViews(systemOfInterest, views)
 
-        ContainerView.addToViews(softwareSystem, views)
+        ContainerView.addToViews(systemOfInterest, views)
 
-        ComponentViews.addToViews(softwareSystem.containers, views)
+        ComponentViews.addToViews(systemOfInterest.containers, views)
 
-        DeploymentViews.addToViews(softwareSystem, views)
+        DeploymentViews.addToViews(systemOfInterest, views)
 
         if (includeADR) {
-            AdrDocumentation.addToWorkspace(workspace, softwareSystem)
+            AdrDocumentation.addToWorkspace(workspace, systemOfInterest)
         }
 
         when (architectureDocumentation) {
             ArchitectureDocumentation.ARC_42 ->
                 Arc42Documentation.addToWorkspace(
                     workspace,
-                    softwareSystem,
+                    systemOfInterest,
                     skipArchitectureDecisions = includeADR
                 )
 
@@ -80,12 +73,12 @@ object StructurizrBuilder {
             ArchitectureDocumentation.STRUCTURIZR ->
                 StructurizrDocumentation.addToWorkspace(
                     workspace,
-                    softwareSystem,
+                    systemOfInterest,
                     skipDecisionLog = includeADR
                 )
 
             ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES ->
-                ViewpointsAndPerspectivesDocumentation.addToWorkspace(workspace, softwareSystem)
+                ViewpointsAndPerspectivesDocumentation.addToWorkspace(workspace, systemOfInterest)
         }
 
         // Apply the style
