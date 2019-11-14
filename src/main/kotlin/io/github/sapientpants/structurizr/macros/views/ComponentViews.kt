@@ -16,13 +16,10 @@ object ComponentViews {
      * added to the set of views.
      * @params containers the containers whose components are of interest
      * @params views the set of views to which the ComponentViews will be added
+     * @params tags the tags to use when filtering the components
      * @see com.structurizr.view.ComponentView
      */
-    fun addToViews(containers: Set<Container>, views: ViewSet) {
-        addToViews(containers, views, emptySet<String>())
-    }
-
-    fun addToViews(containers: Set<Container>, views: ViewSet, tags: Set<String>) {
+    fun addToViews(containers: Set<Container>, views: ViewSet, tags: Set<String> = emptySet()) {
         val tagLine = Utils.tagLine(tags)
         containers
             .filter { container -> container.components.isNotEmpty() }

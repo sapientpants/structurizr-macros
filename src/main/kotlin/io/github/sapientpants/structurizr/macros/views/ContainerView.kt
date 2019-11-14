@@ -15,17 +15,10 @@ object ContainerView {
      * SoftwareSystem, a ContainerView will not be added to the set of views.
      * @params softwareSystem the system of interest
      * @params views the set of views to which the ContainerView will be added
+     * @params tags the tags to use when filtering the containers
      * @see com.structurizr.view.ContainerView
      */
-    fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
-        addToViews(
-            softwareSystem,
-            views,
-            emptySet<String>()
-        )
-    }
-
-    fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet, tags: Set<String>) {
+    fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet, tags: Set<String> = emptySet()) {
         val containers = Utils.filter(softwareSystem.containers, tags)
         if (containers.isEmpty()) {
             return
