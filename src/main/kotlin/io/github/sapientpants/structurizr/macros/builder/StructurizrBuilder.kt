@@ -37,8 +37,6 @@ object StructurizrBuilder {
 
         modelAndViewsBuilder(model, views)
 
-        model.addImplicitRelationships()
-
         // Declare the diagrams to render
 
         val softwareSystem =

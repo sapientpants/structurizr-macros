@@ -19,24 +19,7 @@ object PlantUMLBuilder {
         enterpriseName: String,
         workspaceName: String,
         workspaceDescription: String,
-        style: Style = PlantUMLStyle(),
-        modelAndViewsBuilder: ModelAndViewsBuilder
-    ) {
-        build(
-            enterpriseName,
-            workspaceName,
-            workspaceDescription,
-            DEFAULT_OUTPUT_PATH,
-            style,
-            modelAndViewsBuilder
-        )
-    }
-
-    fun build(
-        enterpriseName: String,
-        workspaceName: String,
-        workspaceDescription: String,
-        outputPath: String,
+        outputPath: String = DEFAULT_OUTPUT_PATH,
         style: Style = PlantUMLStyle(),
         modelAndViewsBuilder: ModelAndViewsBuilder
     ) {
@@ -49,8 +32,6 @@ object PlantUMLBuilder {
         val views = workspace.views
 
         modelAndViewsBuilder(model, views)
-
-        model.addImplicitRelationships()
 
         // Declare the diagrams to render
 
