@@ -26,7 +26,7 @@ object ComponentViews {
             .forEach { container ->
                 val componentView = views.createComponentView(
                     container,
-                    "${container.name} components",
+                    "Components-${container.name}-${container.softwareSystem.name}",
                     "Components diagram for ${container.name}$tagLine."
                 )
                 val components = Utils.filter(container.components, tags)

@@ -27,7 +27,7 @@ object ContainerView {
         val tagLine = Utils.tagLine(tags)
         val containerView = views.createContainerView(
             softwareSystem,
-            "Containers",
+            "Containers-${softwareSystem.name}",
             "Container diagram for ${softwareSystem.name}$tagLine"
         )
 

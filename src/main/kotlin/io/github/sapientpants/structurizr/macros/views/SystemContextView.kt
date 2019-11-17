@@ -16,7 +16,7 @@ object SystemContextView {
     fun addToViews(softwareSystem: SoftwareSystem, views: ViewSet) {
         val systemContextView = views.createSystemContextView(
             softwareSystem,
-            "SystemContext",
+            "SystemContext-${softwareSystem.name}",
             "System context diagram for ${softwareSystem.name}"
         )
         systemContextView.isEnterpriseBoundaryVisible = false
