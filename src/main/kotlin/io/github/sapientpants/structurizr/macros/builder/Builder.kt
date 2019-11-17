@@ -33,35 +33,42 @@ object Builder {
         val model = workspace.model
         val views = workspace.views
 
-        val systemOfInterest = systemOfInterest(model)
+        val systemsOfInterest = systemsOfInterest(model)
 
         SystemLandscapeView.addToViews(model, views)
 
-        SystemContextView.addToViews(systemOfInterest, views)
+        systemsOfInterest.forEach { systemOfInterest ->
+            SystemContextView.addToViews(systemOfInterest, views)
 
-        ContainerView.addToViews(systemOfInterest, views)
+            ContainerView.addToViews(systemOfInterest, views)
 
-        ComponentViews.addToViews(systemOfInterest.containers, views)
+            ComponentViews.addToViews(systemOfInterest.containers, views)
 
-        DeploymentViews.addToViews(systemOfInterest, views)
+            DeploymentViews.addToViews(systemOfInterest, views)
+        }
 
         // Apply the style
         style.applyToViews(views)
     }
 
-    fun systemOfInterest(model: Model): SoftwareSystem {
-        val softwareSystem =
-            Utils.filter(
-                model.softwareSystems,
-                setOf(Tags.SYSTEM_OF_INTEREST)
-            ).firstOrNull()
-                ?: model.softwareSystems.firstOrNull()
-                ?: throw IllegalStateException("No system of interest found")
+    fun systemsOfInterest(model: Model): Set<SoftwareSystem> {
+        check(model.softwareSystems.isNotEmpty()) { "No software systems in model" }
+
+        val taggedSystemsOfInterest = Utils.filter(
+            model.softwareSystems,
+            setOf(Tags.SYSTEM_OF_INTEREST)
+        )
+
+        if (!taggedSystemsOfInterest.isEmpty()) {
+            return taggedSystemsOfInterest
+        }
+
+        val softwareSystem = model.softwareSystems.first()
 
         // Ensure the software system we take as the system of interest is
         // tagged as such
         softwareSystem.addTags(Tags.SYSTEM_OF_INTEREST)
 
-        return softwareSystem
+        return setOf(softwareSystem)
     }
 }

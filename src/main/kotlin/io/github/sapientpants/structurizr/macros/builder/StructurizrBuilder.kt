@@ -46,7 +46,7 @@ object StructurizrBuilder {
         architectureDocumentation: ArchitectureDocumentation
     ) {
         val model = workspace.model
-        val systemOfInterest = Builder.systemOfInterest(model)
+        val systemOfInterest = Builder.systemsOfInterest(model).first()
 
         if (includeADR) {
             AdrDocumentation.addToWorkspace(workspace, systemOfInterest)
