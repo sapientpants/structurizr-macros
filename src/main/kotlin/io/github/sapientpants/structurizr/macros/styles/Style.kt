@@ -8,7 +8,6 @@ abstract class Style {
     val BLACK = "#000000"
     val WHITE = "#ffffff"
 
-    val PERSON_BACKGROUND = "#f48f05"
     val SYSTEM_OF_INTEREST_BACKGROUND = "#0082ff"
     val CONTAINER_BACKGROUND = "#1fa2ff"
     val COMPONENT_BACKGROUND = "#8ac8ff"
