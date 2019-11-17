@@ -59,7 +59,7 @@ object Builder {
             setOf(Tags.SYSTEM_OF_INTEREST)
         )
 
-        if (!taggedSystemsOfInterest.isEmpty()) {
+        if (taggedSystemsOfInterest.isNotEmpty()) {
             return taggedSystemsOfInterest
         }
 

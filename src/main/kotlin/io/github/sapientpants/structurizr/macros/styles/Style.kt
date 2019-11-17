@@ -36,9 +36,6 @@ abstract class Style {
         styles.addElementStyle(Tags.COMPONENT)
             .background(COMPONENT_BACKGROUND)
             .color(BLACK)
-        styles.addElementStyle(Tags.PERSON)
-            .shape(Shape.Person)
-            .fontSize(22)
 
         styles.addElementStyle(Tags.DATABASE)
             .background(DATABASE_BACKGROUND)
