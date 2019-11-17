@@ -1,5 +1,6 @@
 package io.github.sapientpants.structurizr.macros.builder
 
+import io.github.sapientpants.structurizr.macros.Tags
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Path
@@ -22,81 +23,111 @@ class PlantUMLBuilderTest {
     @Test
     fun `build() should create a system context diagram`() {
         PlantUMLBuilder.build(
-                ENTERPRISE_NAME,
-                WORKSPACE_NAME,
-                WORKSPACE_DESCRIPTION,
-                outputPath.toString()
+            ENTERPRISE_NAME,
+            WORKSPACE_NAME,
+            WORKSPACE_DESCRIPTION,
+            outputPath.toString()
         ) { model, _ ->
             model.addSoftwareSystem("TestSoftwareSystem", null)
         }
 
         assertTrue(
-                File(
-                        outputPath.toString(),
-                        "SystemContext_TestSoftwareSystem.png"
-                ).exists()
+            File(
+                outputPath.toString(),
+                "SystemContext_TestSoftwareSystem.png"
+            ).exists()
+        )
+    }
+
+    @Test
+    fun `build() should create one system context diagram per system of interest`() {
+        PlantUMLBuilder.build(
+            ENTERPRISE_NAME,
+            WORKSPACE_NAME,
+            WORKSPACE_DESCRIPTION,
+            outputPath.toString()
+        ) { model, _ ->
+            val ss1 = model.addSoftwareSystem("TestSoftwareSystem1", null)
+            ss1.addTags(Tags.SYSTEM_OF_INTEREST)
+
+            val ss2 = model.addSoftwareSystem("TestSoftwareSystem2", null)
+            ss2.addTags(Tags.SYSTEM_OF_INTEREST)
+        }
+
+        assertTrue(
+            File(
+                outputPath.toString(),
+                "SystemContext_TestSoftwareSystem1.png"
+            ).exists()
+        )
+
+        assertTrue(
+            File(
+                outputPath.toString(),
+                "SystemContext_TestSoftwareSystem2.png"
+            ).exists()
         )
     }
 
     @Test
     fun `build() should create a container diagram`() {
         PlantUMLBuilder.build(
-                ENTERPRISE_NAME,
-                WORKSPACE_NAME,
-                WORKSPACE_DESCRIPTION,
-                outputPath.toString()
+            ENTERPRISE_NAME,
+            WORKSPACE_NAME,
+            WORKSPACE_DESCRIPTION,
+            outputPath.toString()
         ) { model, _ ->
             val softwareSystem =
-                    model.addSoftwareSystem(
-                            "TestSoftwareSystem",
-                            null
-                    )
-            softwareSystem.addContainer(
-                    "TestContainer",
-                    null,
+                model.addSoftwareSystem(
+                    "TestSoftwareSystem",
                     null
+                )
+            softwareSystem.addContainer(
+                "TestContainer",
+                null,
+                null
             )
         }
 
         assertTrue(
-                File(
-                        outputPath.toString(),
-                        "Containers_TestSoftwareSystem.png"
-                ).exists()
+            File(
+                outputPath.toString(),
+                "Containers_TestSoftwareSystem.png"
+            ).exists()
         )
     }
 
     @Test
     fun `build() should create a component diagram`() {
         PlantUMLBuilder.build(
-                ENTERPRISE_NAME,
-                WORKSPACE_NAME,
-                WORKSPACE_DESCRIPTION,
-                outputPath.toString()
+            ENTERPRISE_NAME,
+            WORKSPACE_NAME,
+            WORKSPACE_DESCRIPTION,
+            outputPath.toString()
         ) { model, _ ->
             val softwareSystem =
-                    model.addSoftwareSystem(
-                            "TestSoftwareSystem",
-                            null
-                    )
+                model.addSoftwareSystem(
+                    "TestSoftwareSystem",
+                    null
+                )
             val container =
-                    softwareSystem.addContainer(
-                            "TestContainer",
-                            null,
-                            null
-                    )
-            container.addComponent(
-                    "TestComponent",
+                softwareSystem.addContainer(
+                    "TestContainer",
                     null,
                     null
+                )
+            container.addComponent(
+                "TestComponent",
+                null,
+                null
             )
         }
 
         assertTrue(
-                File(
-                        outputPath.toString(),
-                        "Components_TestContainer_TestSoftwareSystem.png"
-                ).exists()
+            File(
+                outputPath.toString(),
+                "Components_TestContainer_TestSoftwareSystem.png"
+            ).exists()
         )
     }
 }
