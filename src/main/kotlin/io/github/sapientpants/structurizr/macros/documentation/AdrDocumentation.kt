@@ -24,9 +24,9 @@ object AdrDocumentation {
     fun addToWorkspace(
         workspace: Workspace,
         softwareSystem: SoftwareSystem,
-        ardDirectoryPath: String = DEFAULT_ADR_DIRECTORY_PATH
+        adrDirectoryPath: String = DEFAULT_ADR_DIRECTORY_PATH
     ) {
-        val adrDirectory = File(ardDirectoryPath)
+        val adrDirectory = File(adrDirectoryPath)
 
         val adrToolsImporter = AdrToolsImporter(workspace, adrDirectory)
         adrToolsImporter.importArchitectureDecisionRecords(softwareSystem)
