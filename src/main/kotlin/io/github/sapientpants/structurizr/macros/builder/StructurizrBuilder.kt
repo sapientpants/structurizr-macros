@@ -22,6 +22,31 @@ object StructurizrBuilder {
         style: Style = StructurizrStyle(),
         modelAndViewsBuilder: ModelAndViewsBuilder
     ) {
+        val workspace = initializeWorkspace(
+            enterpriseName,
+            workspaceName,
+            workspaceDescription,
+            addImplicitRelationships,
+            architectureDocumentation,
+            includeADR,
+            style,
+            modelAndViewsBuilder
+        )
+
+        // Render the diagrams
+        StructurizrRenderer.render(workspace)
+    }
+
+    fun initializeWorkspace(
+        enterpriseName: String,
+        workspaceName: String,
+        workspaceDescription: String,
+        addImplicitRelationships: Boolean,
+        architectureDocumentation: ArchitectureDocumentation,
+        includeADR: Boolean,
+        style: Style,
+        modelAndViewsBuilder: ModelAndViewsBuilder
+    ): Workspace {
         val workspace = StructurizrInitializer.init(
             workspaceName,
             workspaceDescription,
@@ -36,8 +61,7 @@ object StructurizrBuilder {
 
         addArchitectureDocumentationToWorkspace(workspace, includeADR, architectureDocumentation)
 
-        // Render the diagrams
-        StructurizrRenderer.render(workspace)
+        return workspace
     }
 
     private fun addArchitectureDocumentationToWorkspace(
