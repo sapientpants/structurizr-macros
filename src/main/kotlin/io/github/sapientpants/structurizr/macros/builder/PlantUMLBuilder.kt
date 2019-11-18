@@ -5,16 +5,34 @@ import io.github.sapientpants.structurizr.macros.renderer.PlantUmlRenderer
 import io.github.sapientpants.structurizr.macros.styles.PlantUMLStyle
 import io.github.sapientpants.structurizr.macros.styles.Style
 
-object PlantUMLBuilder {
-    private const val DEFAULT_OUTPUT_PATH = "./build/plantuml"
+class PlantUMLBuilder(
+    enterpriseName: String,
+    workspaceName: String,
+    workspaceDescription: String
+) : Builder(enterpriseName, workspaceName, workspaceDescription) {
+
+    private val defaultOutputPath = "./build/plantuml"
+
+    private var outputPath = defaultOutputPath
+    private var addImplicitRelationships = true
+    private var style: Style = PlantUMLStyle()
+
+    fun outputPath(outputPath: String): PlantUMLBuilder {
+        this.outputPath = outputPath
+        return this
+    }
+
+    fun addImplicitRelationships(addImplicitRelationships: Boolean): PlantUMLBuilder {
+        this.addImplicitRelationships = addImplicitRelationships
+        return this
+    }
+
+    fun style(style: Style): PlantUMLBuilder {
+        this.style = style
+        return this
+    }
 
     fun build(
-        enterpriseName: String,
-        workspaceName: String,
-        workspaceDescription: String,
-        outputPath: String = DEFAULT_OUTPUT_PATH,
-        addImplicitRelationships: Boolean = true,
-        style: Style = PlantUMLStyle(),
         modelAndViewsBuilder: ModelAndViewsBuilder
     ) {
         val workspace = StructurizrInitializer.init(
@@ -27,7 +45,7 @@ object PlantUMLBuilder {
 
         modelAndViewsBuilder(model, views)
 
-        Builder.finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style)
+        finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style)
 
         // Render the diagrams
         PlantUmlRenderer.render(workspace, outputPath)

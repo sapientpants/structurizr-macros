@@ -12,14 +12,12 @@ import io.github.sapientpants.structurizr.macros.views.DeploymentViews
 import io.github.sapientpants.structurizr.macros.views.SystemContextView
 import io.github.sapientpants.structurizr.macros.views.SystemLandscapeView
 
-object Builder {
-    fun addImplicitRelationshipsToModel(model: Model, addImplicitRelationships: Boolean) {
-        if (addImplicitRelationships) {
-            model.addImplicitRelationships()
-        }
-    }
-
-    fun finalizeModelAndAddViewsToWorkspace(
+open class Builder(
+    val enterpriseName: String,
+    val workspaceName: String,
+    val workspaceDescription: String
+) {
+    protected fun finalizeModelAndAddViewsToWorkspace(
         workspace: Workspace,
         addImplicitRelationships: Boolean,
         style: Style
@@ -29,7 +27,13 @@ object Builder {
         addViewsToWorkspace(workspace, style)
     }
 
-    fun addViewsToWorkspace(workspace: Workspace, style: Style) {
+    private fun addImplicitRelationshipsToModel(model: Model, addImplicitRelationships: Boolean) {
+        if (addImplicitRelationships) {
+            model.addImplicitRelationships()
+        }
+    }
+
+    private fun addViewsToWorkspace(workspace: Workspace, style: Style) {
         val model = workspace.model
         val views = workspace.views
 
@@ -51,7 +55,7 @@ object Builder {
         style.applyToViews(views)
     }
 
-    fun systemsOfInterest(model: Model): Set<SoftwareSystem> {
+    protected fun systemsOfInterest(model: Model): Set<SoftwareSystem> {
         check(model.softwareSystems.isNotEmpty()) { "No software systems in model" }
 
         val taggedSystemsOfInterest = Utils.filter(

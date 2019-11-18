@@ -22,14 +22,14 @@ class PlantUMLBuilderTest {
 
     @Test
     fun `build() should create a system context diagram`() {
-        PlantUMLBuilder.build(
+        PlantUMLBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
-            WORKSPACE_DESCRIPTION,
-            outputPath.toString()
-        ) { model, _ ->
-            model.addSoftwareSystem("TestSoftwareSystem", null)
-        }
+            WORKSPACE_DESCRIPTION
+        ).outputPath(outputPath.toString())
+            .build() { model, _ ->
+                model.addSoftwareSystem("TestSoftwareSystem", null)
+            }
 
         assertTrue(
             File(
@@ -41,12 +41,12 @@ class PlantUMLBuilderTest {
 
     @Test
     fun `build() should create one system context diagram per system of interest`() {
-        PlantUMLBuilder.build(
+        PlantUMLBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
-            WORKSPACE_DESCRIPTION,
-            outputPath.toString()
-        ) { model, _ ->
+            WORKSPACE_DESCRIPTION
+        ).outputPath(outputPath.toString())
+            .build() { model, _ ->
             val ss1 = model.addSoftwareSystem("TestSoftwareSystem1", null)
             ss1.addTags(Tags.SYSTEM_OF_INTEREST)
 
@@ -71,12 +71,12 @@ class PlantUMLBuilderTest {
 
     @Test
     fun `build() should create a container diagram`() {
-        PlantUMLBuilder.build(
+        PlantUMLBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
-            WORKSPACE_DESCRIPTION,
-            outputPath.toString()
-        ) { model, _ ->
+            WORKSPACE_DESCRIPTION
+        ).outputPath(outputPath.toString())
+            .build() { model, _ ->
             val softwareSystem =
                 model.addSoftwareSystem(
                     "TestSoftwareSystem",
@@ -99,12 +99,12 @@ class PlantUMLBuilderTest {
 
     @Test
     fun `build() should create a component diagram`() {
-        PlantUMLBuilder.build(
+        PlantUMLBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
-            WORKSPACE_DESCRIPTION,
-            outputPath.toString()
-        ) { model, _ ->
+            WORKSPACE_DESCRIPTION
+        ).outputPath(outputPath.toString())
+            .build() { model, _ ->
             val softwareSystem =
                 model.addSoftwareSystem(
                     "TestSoftwareSystem",

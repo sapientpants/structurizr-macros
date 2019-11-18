@@ -11,42 +11,42 @@ import io.github.sapientpants.structurizr.macros.renderer.StructurizrRenderer
 import io.github.sapientpants.structurizr.macros.styles.StructurizrStyle
 import io.github.sapientpants.structurizr.macros.styles.Style
 
-object StructurizrBuilder {
-    fun build(
-        enterpriseName: String,
-        workspaceName: String,
-        workspaceDescription: String,
-        addImplicitRelationships: Boolean = true,
-        architectureDocumentation: ArchitectureDocumentation = ArchitectureDocumentation.NONE,
-        includeADR: Boolean = false,
-        style: Style = StructurizrStyle(),
-        modelAndViewsBuilder: ModelAndViewsBuilder
-    ) {
-        val workspace = initializeWorkspace(
-            enterpriseName,
-            workspaceName,
-            workspaceDescription,
-            addImplicitRelationships,
-            architectureDocumentation,
-            includeADR,
-            style,
-            modelAndViewsBuilder
-        )
+class StructurizrBuilder(
+    enterpriseName: String,
+    workspaceName: String,
+    workspaceDescription: String
+) : Builder(enterpriseName, workspaceName, workspaceDescription) {
 
-        // Render the diagrams
-        StructurizrRenderer.render(workspace)
+    private var addImplicitRelationships = true
+    private var architectureDocumentation = ArchitectureDocumentation.NONE
+    private var includeADR = false
+    private var style: Style = StructurizrStyle()
+
+    fun addImplicitRelationships(addImplicitRelationships: Boolean): StructurizrBuilder {
+        this.addImplicitRelationships = addImplicitRelationships
+        return this
     }
 
-    fun initializeWorkspace(
-        enterpriseName: String,
-        workspaceName: String,
-        workspaceDescription: String,
-        addImplicitRelationships: Boolean,
-        architectureDocumentation: ArchitectureDocumentation,
-        includeADR: Boolean,
-        style: Style,
+    fun architectureDocumentation(
+        architectureDocumentation: ArchitectureDocumentation
+    ): StructurizrBuilder {
+        this.architectureDocumentation = architectureDocumentation
+        return this
+    }
+
+    fun includeADR(includeADR: Boolean): StructurizrBuilder {
+        this.includeADR = includeADR
+        return this
+    }
+
+    fun style(style: Style): StructurizrBuilder {
+        this.style = style
+        return this
+    }
+
+    fun build(
         modelAndViewsBuilder: ModelAndViewsBuilder
-    ): Workspace {
+    ) {
         val workspace = StructurizrInitializer.init(
             workspaceName,
             workspaceDescription,
@@ -57,11 +57,12 @@ object StructurizrBuilder {
 
         modelAndViewsBuilder(model, views)
 
-        Builder.finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style)
+        finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style)
 
         addArchitectureDocumentationToWorkspace(workspace, includeADR, architectureDocumentation)
 
-        return workspace
+        // Render the diagrams
+        StructurizrRenderer.render(workspace)
     }
 
     private fun addArchitectureDocumentationToWorkspace(
@@ -70,7 +71,7 @@ object StructurizrBuilder {
         architectureDocumentation: ArchitectureDocumentation
     ) {
         val model = workspace.model
-        val systemOfInterest = Builder.systemsOfInterest(model).first()
+        val systemOfInterest = systemsOfInterest(model).first()
 
         if (includeADR) {
             AdrDocumentation.addToWorkspace(workspace, systemOfInterest)
