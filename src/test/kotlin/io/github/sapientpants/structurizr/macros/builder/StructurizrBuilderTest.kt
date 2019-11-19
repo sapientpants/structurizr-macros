@@ -23,7 +23,7 @@ class StructurizrBuilderTest {
     }
 
     @Test
-    fun `buildAndRender() should create one system context diagram per system of interest`() {
+    fun `build() should create one system context diagram per system of interest`() {
         val workspace = StructurizrBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
