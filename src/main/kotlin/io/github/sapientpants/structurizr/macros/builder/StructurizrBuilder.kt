@@ -9,7 +9,6 @@ import io.github.sapientpants.structurizr.macros.documentation.StructurizrDocume
 import io.github.sapientpants.structurizr.macros.documentation.ViewpointsAndPerspectivesDocumentation
 import io.github.sapientpants.structurizr.macros.renderer.StructurizrRenderer
 import io.github.sapientpants.structurizr.macros.styles.StructurizrStyle
-import io.github.sapientpants.structurizr.macros.styles.Style
 
 class StructurizrBuilder(
     enterpriseName: String,
@@ -17,14 +16,11 @@ class StructurizrBuilder(
     workspaceDescription: String
 ) : Builder(enterpriseName, workspaceName, workspaceDescription) {
 
-    private var addImplicitRelationships = true
     private var architectureDocumentation = ArchitectureDocumentation.NONE
     private var includeADR = false
-    private var style: Style = StructurizrStyle()
 
-    fun addImplicitRelationships(addImplicitRelationships: Boolean): StructurizrBuilder {
-        this.addImplicitRelationships = addImplicitRelationships
-        return this
+    init {
+        this.style(StructurizrStyle())
     }
 
     fun architectureDocumentation(
@@ -39,14 +35,9 @@ class StructurizrBuilder(
         return this
     }
 
-    fun style(style: Style): StructurizrBuilder {
-        this.style = style
-        return this
-    }
-
-    fun build(
+    override fun build(
         modelAndViewsBuilder: ModelAndViewsBuilder
-    ) {
+    ): Workspace {
         val workspace = StructurizrInitializer.init(
             workspaceName,
             workspaceDescription,
@@ -57,11 +48,14 @@ class StructurizrBuilder(
 
         modelAndViewsBuilder(model, views)
 
-        finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style)
+        finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style!!)
 
         addArchitectureDocumentationToWorkspace(workspace, includeADR, architectureDocumentation)
 
-        // Render the diagrams
+        return workspace
+    }
+
+    override fun render(workspace: Workspace) {
         StructurizrRenderer.render(workspace)
     }
 

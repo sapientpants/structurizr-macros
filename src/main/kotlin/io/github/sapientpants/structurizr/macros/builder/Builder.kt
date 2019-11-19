@@ -12,11 +12,37 @@ import io.github.sapientpants.structurizr.macros.views.DeploymentViews
 import io.github.sapientpants.structurizr.macros.views.SystemContextView
 import io.github.sapientpants.structurizr.macros.views.SystemLandscapeView
 
-open class Builder(
-    val enterpriseName: String,
-    val workspaceName: String,
-    val workspaceDescription: String
+abstract class Builder(
+    protected val enterpriseName: String,
+    protected val workspaceName: String,
+    protected val workspaceDescription: String
 ) {
+    protected var addImplicitRelationships = true
+    protected var style: Style? = null
+
+    fun buildAndRender(
+        modelAndViewsBuilder: ModelAndViewsBuilder
+    ) {
+        val workspace = build(modelAndViewsBuilder)
+        render(workspace)
+    }
+
+    internal abstract fun build(
+        modelAndViewsBuilder: ModelAndViewsBuilder
+    ): Workspace
+
+    internal abstract fun render(workspace: Workspace)
+
+    fun addImplicitRelationships(addImplicitRelationships: Boolean): Builder {
+        this.addImplicitRelationships = addImplicitRelationships
+        return this
+    }
+
+    fun style(style: Style): Builder {
+        this.style = style
+        return this
+    }
+
     protected fun finalizeModelAndAddViewsToWorkspace(
         workspace: Workspace,
         addImplicitRelationships: Boolean,

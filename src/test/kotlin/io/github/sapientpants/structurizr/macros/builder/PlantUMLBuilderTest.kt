@@ -21,13 +21,13 @@ class PlantUMLBuilderTest {
     }
 
     @Test
-    fun `build() should create a system context diagram`() {
+    fun `buildAndRender() should create a system context diagram`() {
         PlantUMLBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
             WORKSPACE_DESCRIPTION
         ).outputPath(outputPath.toString())
-            .build() { model, _ ->
+            .buildAndRender() { model, _ ->
                 model.addSoftwareSystem("TestSoftwareSystem", null)
             }
 
@@ -40,13 +40,13 @@ class PlantUMLBuilderTest {
     }
 
     @Test
-    fun `build() should create one system context diagram per system of interest`() {
+    fun `buildAndRender() should create one system context diagram per system of interest`() {
         PlantUMLBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
             WORKSPACE_DESCRIPTION
         ).outputPath(outputPath.toString())
-            .build() { model, _ ->
+            .buildAndRender() { model, _ ->
             val ss1 = model.addSoftwareSystem("TestSoftwareSystem1", null)
             ss1.addTags(Tags.SYSTEM_OF_INTEREST)
 
@@ -70,13 +70,13 @@ class PlantUMLBuilderTest {
     }
 
     @Test
-    fun `build() should create a container diagram`() {
+    fun `buildAndRender() should create a container diagram`() {
         PlantUMLBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
             WORKSPACE_DESCRIPTION
         ).outputPath(outputPath.toString())
-            .build() { model, _ ->
+            .buildAndRender() { model, _ ->
             val softwareSystem =
                 model.addSoftwareSystem(
                     "TestSoftwareSystem",
@@ -98,13 +98,13 @@ class PlantUMLBuilderTest {
     }
 
     @Test
-    fun `build() should create a component diagram`() {
+    fun `buildAndRender() should create a component diagram`() {
         PlantUMLBuilder(
             ENTERPRISE_NAME,
             WORKSPACE_NAME,
             WORKSPACE_DESCRIPTION
         ).outputPath(outputPath.toString())
-            .build() { model, _ ->
+            .buildAndRender() { model, _ ->
             val softwareSystem =
                 model.addSoftwareSystem(
                     "TestSoftwareSystem",
