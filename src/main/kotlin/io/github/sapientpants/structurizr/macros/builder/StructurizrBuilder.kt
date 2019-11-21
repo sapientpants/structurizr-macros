@@ -16,11 +16,19 @@ class StructurizrBuilder(
     workspaceDescription: String
 ) : Builder(enterpriseName, workspaceName, workspaceDescription) {
 
+    private var adrSourcePath: String? = null
     private var architectureDocumentation = ArchitectureDocumentation.NONE
-    private var includeADR = false
+    private var documentationSourcePath: String? = null
 
     init {
         this.style(StructurizrStyle())
+    }
+
+    fun adrSourcePath(
+        adrSourcePath: String
+    ): StructurizrBuilder {
+        this.adrSourcePath = adrSourcePath
+        return this
     }
 
     fun architectureDocumentation(
@@ -30,8 +38,10 @@ class StructurizrBuilder(
         return this
     }
 
-    fun includeADR(includeADR: Boolean): StructurizrBuilder {
-        this.includeADR = includeADR
+    fun documentationSourcePath(
+        documentationSourcePath: String
+    ): StructurizrBuilder {
+        this.documentationSourcePath = documentationSourcePath
         return this
     }
 
@@ -50,7 +60,7 @@ class StructurizrBuilder(
 
         finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style!!)
 
-        addArchitectureDocumentationToWorkspace(workspace, includeADR, architectureDocumentation)
+        addArchitectureDocumentationToWorkspace(workspace, architectureDocumentation)
 
         return workspace
     }
@@ -61,37 +71,59 @@ class StructurizrBuilder(
 
     private fun addArchitectureDocumentationToWorkspace(
         workspace: Workspace,
-        includeADR: Boolean,
         architectureDocumentation: ArchitectureDocumentation
     ) {
         val model = workspace.model
         val systemOfInterest = systemsOfInterest(model).first()
 
-        if (includeADR) {
-            AdrDocumentation.addToWorkspace(workspace, systemOfInterest)
+        if (adrSourcePath != null) {
+            AdrDocumentation.addToWorkspace(
+                workspace,
+                systemOfInterest,
+                adrSourcePath!!
+            )
         }
 
         when (architectureDocumentation) {
-            ArchitectureDocumentation.ARC_42 ->
+            ArchitectureDocumentation.ARC_42 -> {
+                check(documentationSourcePath != null) {
+                    "documentationSourcePath must not be null"
+                }
+
                 Arc42Documentation.addToWorkspace(
                     workspace,
                     systemOfInterest,
-                    skipArchitectureDecisions = includeADR
+                    documentationSourcePath!!
                 )
+            }
 
             ArchitectureDocumentation.NONE -> {
                 // do nothing
             }
 
-            ArchitectureDocumentation.STRUCTURIZR ->
+            ArchitectureDocumentation.STRUCTURIZR -> {
+                check(documentationSourcePath != null) {
+                    "documentationSourcePath must not be null"
+                }
+
                 StructurizrDocumentation.addToWorkspace(
                     workspace,
                     systemOfInterest,
-                    skipDecisionLog = includeADR
+                    documentationSourcePath!!
                 )
+            }
 
-            ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES ->
-                ViewpointsAndPerspectivesDocumentation.addToWorkspace(workspace, systemOfInterest)
+            ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES -> {
+                check(documentationSourcePath != null) {
+                    "documentationSourcePath must not be null"
+                }
+
+                ViewpointsAndPerspectivesDocumentation.addToWorkspace(
+                    workspace,
+                    systemOfInterest,
+                    documentationSourcePath!!
+                )
+            }
         }
     }
 }

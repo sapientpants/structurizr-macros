@@ -1,7 +1,9 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.Tags
+import io.github.sapientpants.structurizr.macros.documentation.ArchitectureDocumentation
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 
 class StructurizrBuilderTest {
@@ -37,5 +39,64 @@ class StructurizrBuilderTest {
         }
 
         assertEquals(2, workspace.views.systemContextViews.size)
+    }
+
+    @Test
+    fun `build() should add Arc42 documentation to the workspace`() {
+        val workspace = StructurizrBuilder(
+            ENTERPRISE_NAME,
+            WORKSPACE_NAME,
+            WORKSPACE_DESCRIPTION
+        ).architectureDocumentation(ArchitectureDocumentation.ARC_42)
+            .documentationSourcePath("./src/test/markdown/arc42")
+            .build { model, _ ->
+                model.addSoftwareSystem("TestSoftwareSystem", null)
+        }
+
+        assertFalse(workspace.documentation.isEmpty)
+    }
+
+    @Test
+    fun `build() should add Structurizr documentation to the workspace`() {
+        val workspace = StructurizrBuilder(
+            ENTERPRISE_NAME,
+            WORKSPACE_NAME,
+            WORKSPACE_DESCRIPTION
+        ).architectureDocumentation(ArchitectureDocumentation.STRUCTURIZR)
+            .documentationSourcePath("./src/test/markdown/structurizr")
+            .build { model, _ ->
+                model.addSoftwareSystem("TestSoftwareSystem", null)
+            }
+
+        assertFalse(workspace.documentation.isEmpty)
+    }
+
+    @Test
+    fun `build() should add Viewpoints and Perspectives documentation to the workspace`() {
+        val workspace = StructurizrBuilder(
+            ENTERPRISE_NAME,
+            WORKSPACE_NAME,
+            WORKSPACE_DESCRIPTION
+        ).architectureDocumentation(ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES)
+            .documentationSourcePath("./src/test/markdown/viewpointsandperspectives")
+            .build { model, _ ->
+                model.addSoftwareSystem("TestSoftwareSystem", null)
+            }
+
+        assertFalse(workspace.documentation.isEmpty)
+    }
+
+    @Test
+    fun `build() should add ADR documentation to the workspace`() {
+        val workspace = StructurizrBuilder(
+            ENTERPRISE_NAME,
+            WORKSPACE_NAME,
+            WORKSPACE_DESCRIPTION
+        ).adrSourcePath("./src/test/markdown/adr")
+            .build { model, _ ->
+                model.addSoftwareSystem("TestSoftwareSystem", null)
+            }
+
+        assertFalse(workspace.documentation.decisions.isEmpty())
     }
 }
