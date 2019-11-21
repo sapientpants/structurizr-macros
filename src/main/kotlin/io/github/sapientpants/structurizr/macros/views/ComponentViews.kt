@@ -2,6 +2,7 @@ package io.github.sapientpants.structurizr.macros.views
 
 import com.structurizr.model.Container
 import com.structurizr.view.ViewSet
+import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.Utils
 
 /**
@@ -29,7 +30,7 @@ object ComponentViews {
                     "Components-${container.name}-${container.softwareSystem.name}",
                     "Components diagram for ${container.name}$tagLine."
                 )
-                val components = Utils.filter(container.components, tags)
+                val components = Tags.filter(container.components, tags)
                 components
                     .forEach { component ->
                         componentView.add(component)

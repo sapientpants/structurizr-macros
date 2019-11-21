@@ -1,5 +1,7 @@
 package io.github.sapientpants.structurizr.macros
 
+import com.structurizr.model.Element
+
 object Tags {
     const val COMPONENT = com.structurizr.model.Tags.COMPONENT
 
@@ -60,4 +62,18 @@ object Tags {
      * Tag to mark an element as a web browser.
      */
     const val WEB_BROWSER = "Web Browser"
+
+    /**
+     * Filters elements with all of the supplied tags. When tags is empty, then all the
+     * input elements are returned.
+     *
+     * @params elements the elements to filter
+     * @params tags the tags to use for filtering
+     * @return those elements tagged with all of the supplied tags
+     */
+    fun <T : Element> filter(elements: Set<T>, tags: Set<String>): Set<T> {
+        return elements.filter { element ->
+            tags.all { tag -> element.hasTag(tag) }
+        }.toSet()
+    }
 }

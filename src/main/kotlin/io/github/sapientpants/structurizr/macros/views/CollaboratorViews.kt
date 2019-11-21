@@ -3,7 +3,7 @@ package io.github.sapientpants.structurizr.macros.views
 import com.structurizr.model.Container
 import com.structurizr.model.Element
 import com.structurizr.view.ViewSet
-import io.github.sapientpants.structurizr.macros.Utils
+import io.github.sapientpants.structurizr.macros.Tags
 
 /**
  * Macros to add container context views to a set of views. A container context view is similar to a
@@ -22,7 +22,7 @@ object CollaboratorViews {
      * @params views the set of views to which the ContainerViews will be added
      */
     fun <T : Element> addToViews(elements: Set<T>, views: ViewSet, tags: Set<String> = emptySet()) {
-        val filteredElements = Utils.filter(elements, tags)
+        val filteredElements = Tags.filter(elements, tags)
         filteredElements.forEach { element ->
             when (element) {
                 is Container -> createContainerCollaboratorView(element, views)

@@ -53,7 +53,7 @@ object SpringComponents {
             SourceCodeComponentFinderStrategy(File(srcPath), 150)
         )
 
-        if (!exclusions.isNullOrEmpty()) {
+        if (exclusions.isNotEmpty()) {
             componentFinder.exclude(*exclusions)
         }
 

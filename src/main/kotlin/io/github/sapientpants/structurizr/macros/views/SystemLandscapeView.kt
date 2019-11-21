@@ -2,6 +2,7 @@ package io.github.sapientpants.structurizr.macros.views
 
 import com.structurizr.model.Model
 import com.structurizr.view.ViewSet
+import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.Utils
 
 /**
@@ -19,10 +20,10 @@ object SystemLandscapeView {
      * @params model the model of the system of interest
      * @params views the set of views to which the SystemLandscapeView will be added
      * @params tags the tags to use for filtering
-     * @see Utils.filter
+     * @see Tags.filter
      */
     fun addToViews(model: Model, views: ViewSet, tags: Set<String> = emptySet()) {
-        val softwareSystems = Utils.filter(model.softwareSystems, tags)
+        val softwareSystems = Tags.filter(model.softwareSystems, tags)
         if (softwareSystems.size <= 1) {
             return
         }
@@ -36,7 +37,7 @@ object SystemLandscapeView {
 
         softwareSystems.forEach(systemLandscapeView::add)
 
-        val people = Utils.filter(model.people, tags)
+        val people = Tags.filter(model.people, tags)
         people.forEach(systemLandscapeView::add)
     }
 }

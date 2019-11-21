@@ -49,14 +49,14 @@ class UtilsTest {
         val element1 = TestElement()
         val element2 = TestElement()
         val elements = setOf(element1, element2)
-        val actual = Utils.filter(elements, emptySet<String>())
+        val actual = Tags.filter(elements, emptySet<String>())
         assertEquals(elements, actual)
     }
 
     @Test
     fun `filter returns an empty set when input elements are empty`() {
         val elements = emptySet<Element>()
-        val actual = Utils.filter(elements, setOf<String>("Some Tag"))
+        val actual = Tags.filter(elements, setOf<String>("Some Tag"))
         assertEquals(elements, actual)
     }
 
@@ -67,7 +67,7 @@ class UtilsTest {
         element1.addTags(tag)
         val element2 = TestElement()
         val elements = setOf(element1, element2)
-        val actual = Utils.filter(elements, setOf<String>(tag))
+        val actual = Tags.filter(elements, setOf<String>(tag))
         assertEquals(setOf<Element>(element1), actual)
     }
 

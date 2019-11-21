@@ -4,7 +4,6 @@ import com.structurizr.Workspace
 import com.structurizr.model.Model
 import com.structurizr.model.SoftwareSystem
 import io.github.sapientpants.structurizr.macros.Tags
-import io.github.sapientpants.structurizr.macros.Utils
 import io.github.sapientpants.structurizr.macros.styles.Style
 import io.github.sapientpants.structurizr.macros.views.ComponentViews
 import io.github.sapientpants.structurizr.macros.views.ContainerView
@@ -84,7 +83,7 @@ abstract class Builder(
     protected fun systemsOfInterest(model: Model): Set<SoftwareSystem> {
         check(model.softwareSystems.isNotEmpty()) { "No software systems in model" }
 
-        val taggedSystemsOfInterest = Utils.filter(
+        val taggedSystemsOfInterest = Tags.filter(
             model.softwareSystems,
             setOf(Tags.SYSTEM_OF_INTEREST)
         )
