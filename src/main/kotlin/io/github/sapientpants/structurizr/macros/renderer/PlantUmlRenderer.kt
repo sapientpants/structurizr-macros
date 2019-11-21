@@ -3,7 +3,6 @@ package io.github.sapientpants.structurizr.macros.renderer
 import com.structurizr.Workspace
 import com.structurizr.io.plantuml.PlantUMLWriter
 import com.structurizr.view.View
-import io.github.sapientpants.structurizr.macros.Utils
 import java.io.File
 import java.io.FileWriter
 import java.io.StringWriter
@@ -59,7 +58,7 @@ object PlantUmlRenderer {
         fileWriter.write(viewPlantUML.toString())
         fileWriter.close()
 
-        val filename = Utils.filenamize(view.key, "png")
+        val filename = Renderer.filenamize(view.key, "png")
 
         val sourceFileReader = SourceFileReader(plantUmlFile)
         val image = sourceFileReader.generatedImages.first()

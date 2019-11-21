@@ -4,11 +4,7 @@ import com.structurizr.model.Element
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-const val DOTENV_TEST_VALUE = "DOTENV_TEST_VALUE"
-const val SYSTEM_PROPERTIES_TEST_VALUE = "SYSTEM_PROPERTIES_TEST_VALUE"
-const val TEST_PROPERTY = "TEST_KEY"
-
-class UtilsTest {
+class TagsTest {
     class TestElement : Element() {
         override fun getCanonicalName(): String {
             TODO("not implemented")
@@ -21,20 +17,6 @@ class UtilsTest {
         override fun getParent(): Element {
             TODO("not implemented")
         }
-    }
-
-    @Test
-    fun `filenameize returns an empty string when provided with one`() {
-        val expected = ""
-        val actual = Utils.filenamize("")
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun `filenameize returns a sanitized filename`() {
-        val expected = "My_filename.png"
-        val actual = Utils.filenamize("My: \t    filename", "png")
-        assertEquals(expected, actual)
     }
 
     @Test

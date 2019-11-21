@@ -1,9 +1,6 @@
-package io.github.sapientpants.structurizr.macros
+package io.github.sapientpants.structurizr.macros.renderer
 
-/**
- * Utility functions used throughout the macros.
- */
-object Utils {
+object Renderer {
     /**
      * Sanitizes the input string for use as a filename.
      *
