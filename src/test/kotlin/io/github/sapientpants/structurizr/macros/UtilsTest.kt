@@ -1,7 +1,6 @@
 package io.github.sapientpants.structurizr.macros
 
 import com.structurizr.model.Element
-import io.github.sapientpants.structurizr.macros.views.Views
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -63,22 +62,5 @@ class UtilsTest {
         val elements = setOf(element1, element2)
         val actual = Tags.filter(elements, setOf<String>(tag))
         assertEquals(setOf<Element>(element1), actual)
-    }
-
-    @Test
-    fun `tagLine returns an empty string when no tags are provided`() {
-        val expected = ""
-        val actual = Views.tagLine(emptySet())
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun `tagLine returns the expected string when tags are provided`() {
-        val tags = setOf<String>(
-            "tag1", "tag2"
-        )
-        val expected = " and tags (tag1, tag2)"
-        val actual = Views.tagLine(tags)
-        assertEquals(expected, actual)
     }
 }
