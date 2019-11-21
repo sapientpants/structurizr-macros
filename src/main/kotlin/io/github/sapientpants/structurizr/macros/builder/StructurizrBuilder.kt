@@ -10,6 +10,9 @@ import io.github.sapientpants.structurizr.macros.documentation.ViewpointsAndPers
 import io.github.sapientpants.structurizr.macros.renderer.StructurizrRenderer
 import io.github.sapientpants.structurizr.macros.styles.StructurizrStyle
 
+private const val DOCUMENTATION_SOURCE_PATH_MUST_NOT_BE_NULL =
+    "documentationSourcePath must not be null"
+
 class StructurizrBuilder(
     enterpriseName: String,
     workspaceName: String,
@@ -87,7 +90,7 @@ class StructurizrBuilder(
         when (architectureDocumentation) {
             ArchitectureDocumentation.ARC_42 -> {
                 check(documentationSourcePath != null) {
-                    "documentationSourcePath must not be null"
+                    DOCUMENTATION_SOURCE_PATH_MUST_NOT_BE_NULL
                 }
 
                 Arc42Documentation.addToWorkspace(
@@ -103,7 +106,7 @@ class StructurizrBuilder(
 
             ArchitectureDocumentation.STRUCTURIZR -> {
                 check(documentationSourcePath != null) {
-                    "documentationSourcePath must not be null"
+                    DOCUMENTATION_SOURCE_PATH_MUST_NOT_BE_NULL
                 }
 
                 StructurizrDocumentation.addToWorkspace(
@@ -115,7 +118,7 @@ class StructurizrBuilder(
 
             ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES -> {
                 check(documentationSourcePath != null) {
-                    "documentationSourcePath must not be null"
+                    DOCUMENTATION_SOURCE_PATH_MUST_NOT_BE_NULL
                 }
 
                 ViewpointsAndPerspectivesDocumentation.addToWorkspace(
