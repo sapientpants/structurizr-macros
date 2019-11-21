@@ -2,8 +2,10 @@ package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.documentation.ArchitectureDocumentation
+import java.lang.IllegalStateException
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 
 class StructurizrBuilderTest {
@@ -57,6 +59,20 @@ class StructurizrBuilderTest {
     }
 
     @Test
+    fun `build() throws IllegalStateException with Arc42 documentation and missing documentationSourcePath`() {
+        assertThrows(IllegalStateException::class.java) { ->
+            val workspace = StructurizrBuilder(
+                ENTERPRISE_NAME,
+                WORKSPACE_NAME,
+                WORKSPACE_DESCRIPTION
+            ).architectureDocumentation(ArchitectureDocumentation.ARC_42)
+                .build { model, _ ->
+                    model.addSoftwareSystem("TestSoftwareSystem", null)
+                }
+        }
+    }
+
+    @Test
     fun `build() should add Structurizr documentation to the workspace`() {
         val workspace = StructurizrBuilder(
             ENTERPRISE_NAME,
@@ -72,6 +88,20 @@ class StructurizrBuilderTest {
     }
 
     @Test
+    fun `build() throws IllegalStateException with Structurizr documentation and missing documentationSourcePath`() {
+        assertThrows(IllegalStateException::class.java) { ->
+            val workspace = StructurizrBuilder(
+                ENTERPRISE_NAME,
+                WORKSPACE_NAME,
+                WORKSPACE_DESCRIPTION
+            ).architectureDocumentation(ArchitectureDocumentation.STRUCTURIZR)
+                .build { model, _ ->
+                    model.addSoftwareSystem("TestSoftwareSystem", null)
+                }
+        }
+    }
+
+    @Test
     fun `build() should add Viewpoints and Perspectives documentation to the workspace`() {
         val workspace = StructurizrBuilder(
             ENTERPRISE_NAME,
@@ -84,6 +114,20 @@ class StructurizrBuilderTest {
             }
 
         assertFalse(workspace.documentation.isEmpty)
+    }
+
+    @Test
+    fun `build() throws IllegalStateException with Viewpoints and Perspectives documentation and missing documentationSourcePath`() {
+        assertThrows(IllegalStateException::class.java) { ->
+            val workspace = StructurizrBuilder(
+                ENTERPRISE_NAME,
+                WORKSPACE_NAME,
+                WORKSPACE_DESCRIPTION
+            ).architectureDocumentation(ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES)
+                .build { model, _ ->
+                    model.addSoftwareSystem("TestSoftwareSystem", null)
+                }
+        }
     }
 
     @Test
