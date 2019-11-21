@@ -61,7 +61,7 @@ class StructurizrBuilderTest {
     @Test
     fun `build() throws IllegalStateException with Arc42 documentation and missing documentationSourcePath`() {
         assertThrows(IllegalStateException::class.java) { ->
-            val workspace = StructurizrBuilder(
+            StructurizrBuilder(
                 ENTERPRISE_NAME,
                 WORKSPACE_NAME,
                 WORKSPACE_DESCRIPTION
@@ -90,7 +90,7 @@ class StructurizrBuilderTest {
     @Test
     fun `build() throws IllegalStateException with Structurizr documentation and missing documentationSourcePath`() {
         assertThrows(IllegalStateException::class.java) { ->
-            val workspace = StructurizrBuilder(
+            StructurizrBuilder(
                 ENTERPRISE_NAME,
                 WORKSPACE_NAME,
                 WORKSPACE_DESCRIPTION
@@ -119,7 +119,7 @@ class StructurizrBuilderTest {
     @Test
     fun `build() throws IllegalStateException with Viewpoints and Perspectives documentation and missing documentationSourcePath`() {
         assertThrows(IllegalStateException::class.java) { ->
-            val workspace = StructurizrBuilder(
+            StructurizrBuilder(
                 ENTERPRISE_NAME,
                 WORKSPACE_NAME,
                 WORKSPACE_DESCRIPTION
