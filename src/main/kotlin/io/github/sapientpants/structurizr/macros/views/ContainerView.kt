@@ -3,7 +3,6 @@ package io.github.sapientpants.structurizr.macros.views
 import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Tags
-import io.github.sapientpants.structurizr.macros.Utils
 
 /**
  * Macros to add container views.
@@ -25,7 +24,7 @@ object ContainerView {
             return
         }
 
-        val tagLine = Utils.tagLine(tags)
+        val tagLine = Views.tagLine(tags)
         val containerView = views.createContainerView(
             softwareSystem,
             "Containers-${softwareSystem.name}",

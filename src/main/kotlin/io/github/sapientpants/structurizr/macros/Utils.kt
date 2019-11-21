@@ -28,20 +28,6 @@ object Utils {
     }
 
     /**
-     * Concatenates a series of tags together as the suffix of a diagram title.
-     *
-     * @params tags the tags to be concatenated
-     * @return the concatenated string of tags
-     */
-    fun tagLine(tags: Set<String>): String {
-        return if (tags.isNotEmpty()) {
-            tags.joinToString(", ", " and tags (", ")")
-        } else {
-            ""
-        }
-    }
-
-    /**
      * Gets the value for the specified configuration key. The first non-null value
      * will be returned from <pre>System.getenv</pre>, <pre>System.getProperty</pre>
      * or <pre>Dotenv</pre> (checked in that order)

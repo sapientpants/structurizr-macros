@@ -3,7 +3,6 @@ package io.github.sapientpants.structurizr.macros.views
 import com.structurizr.model.Container
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Tags
-import io.github.sapientpants.structurizr.macros.Utils
 
 /**
  * Macros to add container views.
@@ -21,7 +20,7 @@ object ComponentViews {
      * @see com.structurizr.view.ComponentView
      */
     fun addToViews(containers: Set<Container>, views: ViewSet, tags: Set<String> = emptySet()) {
-        val tagLine = Utils.tagLine(tags)
+        val tagLine = Views.tagLine(tags)
         containers
             .filter { container -> container.components.isNotEmpty() }
             .forEach { container ->

@@ -1,6 +1,7 @@
 package io.github.sapientpants.structurizr.macros
 
 import com.structurizr.model.Element
+import io.github.sapientpants.structurizr.macros.views.Views
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.BeforeEach
@@ -90,7 +91,7 @@ class UtilsTest {
     @Test
     fun `tagLine returns an empty string when no tags are provided`() {
         val expected = ""
-        val actual = Utils.tagLine(emptySet())
+        val actual = Views.tagLine(emptySet())
         assertEquals(expected, actual)
     }
 
@@ -100,7 +101,7 @@ class UtilsTest {
             "tag1", "tag2"
         )
         val expected = " and tags (tag1, tag2)"
-        val actual = Utils.tagLine(tags)
+        val actual = Views.tagLine(tags)
         assertEquals(expected, actual)
     }
 }

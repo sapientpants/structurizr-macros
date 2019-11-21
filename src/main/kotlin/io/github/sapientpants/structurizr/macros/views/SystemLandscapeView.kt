@@ -3,7 +3,6 @@ package io.github.sapientpants.structurizr.macros.views
 import com.structurizr.model.Model
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Tags
-import io.github.sapientpants.structurizr.macros.Utils
 
 /**
  * Macros to add system landscape views.
@@ -29,7 +28,7 @@ object SystemLandscapeView {
         }
 
         val enterprise = model.enterprise
-        val tagLine = Utils.tagLine(tags)
+        val tagLine = Views.tagLine(tags)
         val systemLandscapeView = views.createSystemLandscapeView(
             "SystemLandscape-${enterprise.name}",
             "System landscape diagram for ${enterprise.name}$tagLine"
