@@ -20,6 +20,7 @@ extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
 val dokka by tasks.getting(DokkaTask::class) {
     outputFormat = "javadoc"
     outputDirectory = "$buildDir/javadoc"
+
     jdkVersion = 8
 
     includes = listOf("src/main/kotlin/packages.md")
@@ -61,6 +62,7 @@ val jar by tasks.getting(Jar::class) {
 }
 
 repositories {
+    mavenCentral()
     jcenter()
 }
 
