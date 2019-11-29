@@ -45,47 +45,20 @@ Add the dependency to `pom.xml`
 </dependency>
 ```
 
-### Architecture Decision Records
-
-If you want to use ADRs, then install adr-tools. Only works with the StructurizrRenderer.
-
-`brew install adr-tools`
-
-`adr-init ./src/main/markdown/adr`
-
-### Arc42 Templates
-
-If you want to use Arc42, then install the Arc42 templates. Only works with the StructurizrRenderer.
-
-`mkdir -p ./src/main/markdown/arc42`
-
-Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown)
-
-### Arc42 Templates
-
-If you want to use the Arc42 architecture documentation format, then install the templates. Only works with the StructurizrRenderer.
-
-`mkdir -p ./src/main/markdown/arc42`
-
-Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/arc42/markdown)
-
-### Structurizr Templates
-
-If you want to use the Structurizr architecture documentation format, then install the templates. Only works with the StructurizrRenderer.
-
-`mkdir -p ./src/main/markdown/structurizr`
-
-Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/structurizr/markdown)
-
-### Viewpoints and Perspectives Templates
-
-If you want to use the Viewpoints and Perspectives architecture documentation format, then install the templates. Only works with the StructurizrRenderer.
-
-`mkdir -p ./src/main/markdown/viewpointsandperspectives`
-
-Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/viewpointsandperspectives/markdown)
-
 ## Usage
+
+### Architecture Documentation
+
+- [./doc/architecture-documentation/arc42.md](Arc42)
+- [./doc/architecture-documentation/architecture-decision-records.md](Architecture Decision Records)
+- [./doc/architecture-documentation/structurizr.md](Structurizr)
+- [./doc/architecture-documentation/viewpoints-and-perspectices.md](Viewpoints and Perspectives)
+
+### Rendering
+
+- [./doc/rendering/plantuml.md](PlantUML)
+- [./doc/rendering/structurizr.md](Structurizr)
+
 
 ### Examples
 
