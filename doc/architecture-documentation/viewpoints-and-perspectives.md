@@ -11,3 +11,18 @@ If you want to use the Viewpoints and Perspectives architecture documentation fo
 `mkdir -p ./src/main/markdown/viewpointsandperspectives`
 
 Copy the templates from [Structurizr](https://github.com/structurizr/java/tree/master/structurizr-examples/src/com/structurizr/example/documentation/viewpointsandperspectives/markdown)
+
+## Code example
+
+```kotlin
+StructurizrBuilder(
+    enterpriseName,
+    workspaceName,
+    workspaceDescription
+).architectureDocumentation(ArchitectureDocumentation.VIEWPOINTS_AND_PERSPECTIVES)
+ .buildAndRender { model, views ->
+
+     // TODO: define the model and views
+
+}
+```

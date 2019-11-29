@@ -11,3 +11,18 @@ If you want to use ADRs, then install adr-tools. Only works with the Structurizr
 `brew install adr-tools`
 
 `adr-init ./src/main/markdown/adr`
+
+## Code example
+
+```kotlin
+StructurizrBuilder(
+    enterpriseName,
+    workspaceName,
+    workspaceDescription
+).adrSourcePath("./src/main/markdown/adr")
+ .buildAndRender { model, views ->
+
+     // TODO: define the model and views
+
+}
+```
