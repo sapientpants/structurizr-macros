@@ -14,7 +14,7 @@ PlantUMLBuilder(
     workspaceName,
     workspaceDescription
 ).outputPath("./build/plantuml")
- .buildAndRender { model, views  ->
+ .buildAndRender { model, views ->
 
      // TODO: define the model and views
 
