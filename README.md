@@ -49,15 +49,15 @@ Add the dependency to `pom.xml`
 
 ### Architecture Documentation
 
-- [./doc/architecture-documentation/arc42.md](Arc42)
-- [./doc/architecture-documentation/architecture-decision-records.md](Architecture Decision Records)
-- [./doc/architecture-documentation/structurizr.md](Structurizr)
-- [./doc/architecture-documentation/viewpoints-and-perspectices.md](Viewpoints and Perspectives)
+- [doc/architecture-documentation/arc42.md](Arc42)
+- [doc/architecture-documentation/architecture-decision-records.md](Architecture Decision Records)
+- [doc/architecture-documentation/structurizr.md](Structurizr)
+- [doc/architecture-documentation/viewpoints-and-perspectices.md](Viewpoints and Perspectives)
 
 ### Rendering
 
-- [./doc/rendering/plantuml.md](PlantUML)
-- [./doc/rendering/structurizr.md](Structurizr)
+- [doc/rendering/plantuml.md](PlantUML)
+- [doc/rendering/structurizr.md](Structurizr)
 
 
 ### Examples
