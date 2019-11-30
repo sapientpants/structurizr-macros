@@ -19,12 +19,6 @@ brew tap AdoptOpenJDK/openjdk
 brew cask install adoptopenjdk-12
 ```
 
-### Graphviz
-
-Required if you will be rendering diagrams using PlantUML.
-
-`brew install graphviz`
-
 ### Gradle
 
 Add the dependency to `build.gradle.kts`
