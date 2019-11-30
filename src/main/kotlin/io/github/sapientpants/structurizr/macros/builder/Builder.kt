@@ -1,6 +1,7 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import com.structurizr.Workspace
+import com.structurizr.model.Location
 import com.structurizr.model.Model
 import com.structurizr.model.SoftwareSystem
 import io.github.sapientpants.structurizr.macros.Tags
@@ -44,12 +45,37 @@ abstract class Builder(
 
     protected fun finalizeModelAndAddViewsToWorkspace(
         workspace: Workspace,
-        addImplicitRelationships: Boolean,
         style: Style
     ) {
         val model = workspace.model
-        addImplicitRelationshipsToModel(model, addImplicitRelationships)
+
+        finalizeModel(model)
         addViewsToWorkspace(workspace, style)
+    }
+
+    private fun finalizeModel(model: Model) {
+        addImplicitRelationshipsToModel(model, addImplicitRelationships)
+
+        tagInternalPeopleAndSoftwareSystems(model)
+        tagExternalPeopleAndSoftwareSystems(model)
+    }
+
+    private fun tagExternalPeopleAndSoftwareSystems(model: Model) {
+        model.people
+            .filter { it.location == Location.External }
+            .forEach { it.addTags(Tags.EXTERNAL) }
+        model.softwareSystems
+            .filter { it.location == Location.External }
+            .forEach { it.addTags(Tags.EXTERNAL) }
+    }
+
+    private fun tagInternalPeopleAndSoftwareSystems(model: Model) {
+        model.people
+            .filter { it.location == Location.Internal }
+            .forEach { it.addTags(Tags.INTERNAL) }
+        model.softwareSystems
+            .filter { it.location == Location.Internal }
+            .forEach { it.addTags(Tags.INTERNAL) }
     }
 
     private fun addImplicitRelationshipsToModel(model: Model, addImplicitRelationships: Boolean) {

@@ -1,6 +1,8 @@
 package io.github.sapientpants.structurizr.macros.views
 
+import com.structurizr.model.Location
 import com.structurizr.model.Model
+import com.structurizr.model.SoftwareSystem
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Tags
 
@@ -23,7 +25,7 @@ object SystemLandscapeView {
      */
     fun addToViews(model: Model, views: ViewSet, tags: Set<String> = emptySet()) {
         val softwareSystems = Tags.filter(model.softwareSystems, tags)
-        if (softwareSystems.size <= 1) {
+        if (skipSystemLandscapeDiagram(softwareSystems)) {
             return
         }
 
@@ -38,5 +40,10 @@ object SystemLandscapeView {
 
         val people = Tags.filter(model.people, tags)
         people.forEach(systemLandscapeView::add)
+    }
+
+    private fun skipSystemLandscapeDiagram(softwareSystems: Set<SoftwareSystem>): Boolean {
+        return softwareSystems.size <= 1 ||
+            softwareSystems.none { it.location == Location.External }
     }
 }

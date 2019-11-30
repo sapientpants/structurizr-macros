@@ -1,6 +1,7 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import com.structurizr.Workspace
+import com.structurizr.encryption.EncryptionStrategy
 import io.github.sapientpants.structurizr.macros.StructurizrInitializer
 import io.github.sapientpants.structurizr.macros.documentation.AdrDocumentation
 import io.github.sapientpants.structurizr.macros.documentation.Arc42Documentation
@@ -22,6 +23,7 @@ class StructurizrBuilder(
     private var adrSourcePath: String? = null
     private var architectureDocumentation = ArchitectureDocumentation.NONE
     private var documentationSourcePath: String? = null
+    private var encryptionStrategy: EncryptionStrategy? = null
 
     init {
         this.style(StructurizrStyle())
@@ -48,6 +50,11 @@ class StructurizrBuilder(
         return this
     }
 
+    fun encryptionStrategy(encryptionStrategy: EncryptionStrategy): StructurizrBuilder {
+        this.encryptionStrategy = encryptionStrategy
+        return this
+    }
+
     override fun build(
         modelAndViewsBuilder: ModelAndViewsBuilder
     ): Workspace {
@@ -61,7 +68,7 @@ class StructurizrBuilder(
 
         modelAndViewsBuilder(model, views)
 
-        finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style!!)
+        finalizeModelAndAddViewsToWorkspace(workspace, style!!)
 
         addArchitectureDocumentationToWorkspace(workspace, architectureDocumentation)
 
@@ -69,7 +76,7 @@ class StructurizrBuilder(
     }
 
     override fun render(workspace: Workspace) {
-        StructurizrRenderer.render(workspace)
+        StructurizrRenderer.render(workspace, encryptionStrategy)
     }
 
     private fun addArchitectureDocumentationToWorkspace(

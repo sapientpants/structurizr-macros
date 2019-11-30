@@ -3,6 +3,8 @@ package io.github.sapientpants.structurizr.macros
 import com.structurizr.model.Element
 
 object Tags {
+    const val ASYNCHRONOUS = com.structurizr.model.Tags.ASYNCHRONOUS
+
     const val COMPONENT = com.structurizr.model.Tags.COMPONENT
 
     const val CONTAINER = com.structurizr.model.Tags.CONTAINER
@@ -14,12 +16,18 @@ object Tags {
 
     const val ELEMENT = com.structurizr.model.Tags.ELEMENT
 
+    const val EXTERNAL = "External"
+
+    const val INTERNAL = "Internal"
+
     const val PERSON = com.structurizr.model.Tags.PERSON
 
     /**
      * Tag to mark an element as a mobile device that should be rendered in portrait orientation.
      */
     const val MOBILE_DEVICE_PORTRAIT = "Mobile Device Portrait"
+
+    const val RELATIONSHIP = com.structurizr.model.Tags.RELATIONSHIP
 
     const val SOFTWARE_SYSTEM = com.structurizr.model.Tags.SOFTWARE_SYSTEM
 
@@ -50,6 +58,8 @@ object Tags {
      * @see org.springframework.stereotype.Repository
      */
     const val SPRING_REPOSITORY = "Spring Repository"
+
+    const val SYNCHRONOUS = com.structurizr.model.Tags.SYNCHRONOUS
 
     /**
      * Tag to mark a SoftwareSystem as the system of interest.

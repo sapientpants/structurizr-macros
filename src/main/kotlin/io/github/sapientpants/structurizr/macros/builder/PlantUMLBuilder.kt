@@ -37,7 +37,7 @@ class PlantUMLBuilder(
 
         modelAndViewsBuilder(model, views)
 
-        finalizeModelAndAddViewsToWorkspace(workspace, addImplicitRelationships, style!!)
+        finalizeModelAndAddViewsToWorkspace(workspace, style!!)
 
         return workspace
     }
