@@ -25,7 +25,7 @@ brew cask install adoptopenjdk-12
 Add the dependency to `build.gradle.kts`
 
 ```kotlin
-implementation("io.github.sapientpants:structurizr-macros:0.0.34-SNAPSHOT")
+implementation("io.github.sapientpants:structurizr-macros:VERSION")
 ```
 
 ### Maven
