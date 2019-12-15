@@ -1,5 +1,6 @@
 # structurizr-macros
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.sapientpants/structurizr-macros/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.sapientpants/structurizr-macros)
 [![Build Status](https://travis-ci.org/sapientpants/structurizr-macros.svg?branch=master)](https://travis-ci.org/sapientpants/structurizr-macros)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=structurizr-macros&metric=alert_status)](https://sonarcloud.io/dashboard?id=structurizr-macros)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=structurizr-macros&metric=coverage)](https://sonarcloud.io/dashboard?id=structurizr-macros)
@@ -35,7 +36,7 @@ Add the dependency to `pom.xml`
 <dependency>
     <groupId>io.github.sapientpants</groupId>
     <artifactId>structurizr-macros</artifactId>
-    <version>0.0.34-SNAPSHOT</version>
+    <version>VERSION</version>
 </dependency>
 ```
 
