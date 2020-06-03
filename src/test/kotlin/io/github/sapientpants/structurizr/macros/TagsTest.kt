@@ -11,7 +11,7 @@ class TagsTest {
         }
 
         override fun getRequiredTags(): MutableSet<String> {
-            TODO("not implemented")
+            return mutableSetOf()
         }
 
         override fun getParent(): Element {
