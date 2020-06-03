@@ -2,7 +2,7 @@ object Dependencies {
     const val dokkaVersion = "0.9.18"
     private const val dotEnvVersion = "5.2.1"
     private const val junitVersion = "5.6.2"
-    const val kotlinVersion = "1.3.61"
+    const val kotlinVersion = "1.3.70"
     const val ktlintVersion = "9.1.1"
     private const val plantUmlVersion = "1.2019.12"
     private const val slf4jVersion = "1.7.29"
