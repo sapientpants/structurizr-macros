@@ -5,7 +5,7 @@ object Dependencies {
     const val kotlinVersion = "1.3.70"
     const val ktlintVersion = "9.2.1"
     private const val plantUmlVersion = "1.2020.11"
-    private const val slf4jVersion = "1.7.29"
+    private const val slf4jVersion = "1.7.30"
     private const val structurizrVersion = "1.3.3"
     private const val structurizrAdrToolsVersion = "1.3.1"
     private const val structurizrAnnotationsVersion = "1.3.1"
