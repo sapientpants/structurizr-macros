@@ -1,6 +1,6 @@
 object Dependencies {
     const val dokkaVersion = "0.9.18"
-    private const val dotEnvVersion = "5.1.3"
+    private const val dotEnvVersion = "5.2.1"
     private const val junitVersion = "5.5.2"
     const val kotlinVersion = "1.3.61"
     const val ktlintVersion = "9.1.1"
