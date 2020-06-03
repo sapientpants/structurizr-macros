@@ -8,6 +8,7 @@ import java.io.FileWriter
 import java.io.StringWriter
 import net.sourceforge.plantuml.FileUtils
 import net.sourceforge.plantuml.SourceFileReader
+import net.sourceforge.plantuml.security.SFile
 
 /**
  * Macros to render the workspace using PlantUML.
@@ -62,7 +63,7 @@ object PlantUmlRenderer {
 
         val sourceFileReader = SourceFileReader(plantUmlFile)
         val image = sourceFileReader.generatedImages.first()
-        val outputFile = File("$outputDirectoryPath/$filename")
-        FileUtils.copyToFile(image.pngFile, outputFile)
+        val outputFile = SFile("$outputDirectoryPath/$filename")
+        FileUtils.copyToFile(SFile.fromFile(image.pngFile), outputFile)
     }
 }
