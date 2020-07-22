@@ -38,7 +38,7 @@ jobs:
       script:
         - gradle build jacocoTestReport
         - sonar-scanner
-      if: branch = master
+      if: branch = trunk
 
 script:
   - gradle build
