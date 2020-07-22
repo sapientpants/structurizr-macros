@@ -1,8 +1,13 @@
 package io.github.sapientpants.structurizr.macros
 
+import io.github.cdimascio.dotenv.DotEnvException
 import io.github.cdimascio.dotenv.Dotenv
+import org.apache.log4j.LogManager
 
 object Env {
+
+    val LOGGER = LogManager.getLogger(Env.javaClass)
+
     /**
      * Gets the value for the specified configuration key. The first non-null value
      * will be returned from <pre>System.getenv</pre>, <pre>System.getProperty</pre>
@@ -22,7 +27,12 @@ object Env {
             return systemPropertyValue
         }
 
-        val dotenv = Dotenv.load()
-        return dotenv[key]
+        return try {
+            val dotenv = Dotenv.load()
+            dotenv[key]
+        } catch (e: DotEnvException) {
+            LOGGER.warn(e.localizedMessage)
+            null
+        }
     }
 }
