@@ -20,7 +20,7 @@ import java.net.URLClassLoader
  * @see org.springframework.stereotype.Repository
  * @see org.springframework.stereotype.Service
  */
-object SpringComponents {
+public object SpringComponents {
     /**
      * Finds Spring components and adds them to the specified container.
      *
@@ -35,7 +35,7 @@ object SpringComponents {
      * @see org.springframework.stereotype.Repository
      * @see org.springframework.stereotype.Service
      */
-    fun addToContainer(
+    public fun addToContainer(
         container: Container,
         packageName: String,
         srcPath: String,

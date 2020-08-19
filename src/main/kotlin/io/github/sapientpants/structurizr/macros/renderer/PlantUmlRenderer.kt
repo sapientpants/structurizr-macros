@@ -13,7 +13,7 @@ import java.io.StringWriter
 /**
  * Macros to render the workspace using PlantUML.
  */
-object PlantUmlRenderer {
+internal object PlantUmlRenderer {
     /**
      * Renders the workspace using PlantUML to a set of PNG files.
      *

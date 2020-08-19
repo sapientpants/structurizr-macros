@@ -1,6 +1,6 @@
 package io.github.sapientpants.structurizr.macros.documentation
 
-enum class ArchitectureDocumentation {
+public enum class ArchitectureDocumentation {
     ARC_42,
     NONE,
     STRUCTURIZR,

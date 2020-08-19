@@ -4,21 +4,21 @@ import com.structurizr.view.Shape
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Tags
 
-abstract class Style {
-    val BLACK = "#000000"
-    val WHITE = "#ffffff"
+public abstract class Style {
+    public val BLACK: String = "#000000"
+    public val WHITE: String = "#ffffff"
 
-    val SYSTEM_OF_INTEREST_BACKGROUND = "#0082ff"
-    val CONTAINER_BACKGROUND = "#1fa2ff"
-    val COMPONENT_BACKGROUND = "#8ac8ff"
-    val DATABASE_BACKGROUND = CONTAINER_BACKGROUND
-    val SPRING_MVC_CONTROLLER_BACKGROUND = COMPONENT_BACKGROUND
-    val SPRING_SERVICE_BACKGROUND = "#b9ddff"
-    val SPRING_REPOSITORY_BACKGROUND = "#e2f2ff"
+    public val SYSTEM_OF_INTEREST_BACKGROUND: String = "#0082ff"
+    public val CONTAINER_BACKGROUND: String = "#1fa2ff"
+    public val COMPONENT_BACKGROUND: String = "#8ac8ff"
+    public val DATABASE_BACKGROUND: String = CONTAINER_BACKGROUND
+    public val SPRING_MVC_CONTROLLER_BACKGROUND: String = COMPONENT_BACKGROUND
+    public val SPRING_SERVICE_BACKGROUND: String = "#b9ddff"
+    public val SPRING_REPOSITORY_BACKGROUND: String = "#e2f2ff"
 
-    abstract fun applyToViews(views: ViewSet)
+    internal abstract fun applyToViews(views: ViewSet)
 
-    fun applyBaseStyles(views: ViewSet) {
+    internal fun applyBaseStyles(views: ViewSet) {
         val styles = views.configuration.styles
 
         styles.clearElementStyles()

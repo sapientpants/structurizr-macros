@@ -8,15 +8,15 @@ import com.structurizr.model.SoftwareSystem
 import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.styles.Style
 
-abstract class Builder(
+public abstract class Builder(
     protected val enterpriseName: String,
     protected val workspaceName: String,
     protected val workspaceDescription: String
 ) {
-    protected var addImplicitRelationships = true
+    private var addImplicitRelationships = true
     protected var style: Style? = null
 
-    fun buildAndRender(
+    public fun buildAndRender(
         modelAndViewsBuilder: ModelAndViewsBuilder
     ) {
         val workspace = build(modelAndViewsBuilder)
@@ -29,12 +29,12 @@ abstract class Builder(
 
     internal abstract fun render(workspace: Workspace)
 
-    fun addImplicitRelationships(addImplicitRelationships: Boolean): Builder {
+    public fun addImplicitRelationships(addImplicitRelationships: Boolean): Builder {
         this.addImplicitRelationships = addImplicitRelationships
         return this
     }
 
-    fun style(style: Style): Builder {
+    public fun style(style: Style): Builder {
         this.style = style
         return this
     }

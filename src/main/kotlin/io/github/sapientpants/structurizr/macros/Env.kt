@@ -4,9 +4,9 @@ import io.github.cdimascio.dotenv.DotEnvException
 import io.github.cdimascio.dotenv.Dotenv
 import org.apache.log4j.LogManager
 
-object Env {
+internal object Env {
 
-    val LOGGER = LogManager.getLogger(Env.javaClass)
+    private val LOGGER = LogManager.getLogger(Env.javaClass)
 
     /**
      * Gets the value for the specified configuration key. The first non-null value

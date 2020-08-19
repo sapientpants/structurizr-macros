@@ -14,14 +14,14 @@ import io.github.sapientpants.structurizr.macros.Tags
  * discuss the world from the perspective of a given container.
  * @see com.structurizr.view.ContainerView
  */
-object CollaboratorViews {
+public object CollaboratorViews {
     /**
      * Adds collaborator views for each of the supplied elements to a set of views.
      * @params elements the elements of interest
      * @params tags the tags to use to filter the given elements
      * @params views the set of views to which the ContainerViews will be added
      */
-    fun <T : Element> addToViews(elements: Set<T>, views: ViewSet, tags: Set<String> = emptySet()) {
+    public fun <T : Element> addToViews(elements: Set<T>, views: ViewSet, tags: Set<String> = emptySet()) {
         val filteredElements = Tags.filter(elements, tags)
         filteredElements.forEach { element ->
             when (element) {

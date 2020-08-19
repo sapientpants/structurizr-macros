@@ -12,7 +12,7 @@ import java.io.File
  *
  * @see StructurizrRenderer
  */
-object AdrDocumentation {
+internal object AdrDocumentation {
     private const val DEFAULT_ADR_DIRECTORY_PATH = "./src/main/markdown/adr"
 
     /**

@@ -2,76 +2,76 @@ package io.github.sapientpants.structurizr.macros
 
 import com.structurizr.model.Element
 
-object Tags {
-    const val ASYNCHRONOUS = com.structurizr.model.Tags.ASYNCHRONOUS
+public object Tags {
+    public const val ASYNCHRONOUS: String = com.structurizr.model.Tags.ASYNCHRONOUS
 
-    const val COMPONENT = com.structurizr.model.Tags.COMPONENT
+    public const val COMPONENT: String = com.structurizr.model.Tags.COMPONENT
 
-    const val CONTAINER = com.structurizr.model.Tags.CONTAINER
+    public const val CONTAINER: String = com.structurizr.model.Tags.CONTAINER
 
     /**
      * Tag to mark an element as a database.
      */
-    const val DATABASE = "Database"
+    public const val DATABASE: String = "Database"
 
-    const val ELEMENT = com.structurizr.model.Tags.ELEMENT
+    public const val ELEMENT: String = com.structurizr.model.Tags.ELEMENT
 
-    const val EXTERNAL = "External"
+    public const val EXTERNAL: String = "External"
 
-    const val INTERNAL = "Internal"
+    public const val INTERNAL: String = "Internal"
 
-    const val PERSON = com.structurizr.model.Tags.PERSON
+    public const val PERSON: String = com.structurizr.model.Tags.PERSON
 
     /**
      * Tag to mark an element as a mobile device that should be rendered in portrait orientation.
      */
-    const val MOBILE_DEVICE_PORTRAIT = "Mobile Device Portrait"
+    public const val MOBILE_DEVICE_PORTRAIT: String = "Mobile Device Portrait"
 
-    const val RELATIONSHIP = com.structurizr.model.Tags.RELATIONSHIP
+    public const val RELATIONSHIP: String = com.structurizr.model.Tags.RELATIONSHIP
 
-    const val SOFTWARE_SYSTEM = com.structurizr.model.Tags.SOFTWARE_SYSTEM
+    public const val SOFTWARE_SYSTEM: String = com.structurizr.model.Tags.SOFTWARE_SYSTEM
 
     /**
      * Tag for components created from Spring's @Component annotation.
      *
      * @see org.springframework.stereotype.Component
      */
-    const val SPRING_COMPONENT = "Spring Component"
+    public const val SPRING_COMPONENT: String = "Spring Component"
 
     /**
      * Tag for components created from Spring's @Controller annotation.
      *
      * @see org.springframework.stereotype.Controller
      */
-    const val SPRING_MVC_CONTROLLER = "Spring MVC Controller"
+    public const val SPRING_MVC_CONTROLLER: String = "Spring MVC Controller"
 
     /**
      * Tag for components created from Spring's @Service annotation.
      *
      * @see org.springframework.stereotype.Service
      */
-    const val SPRING_SERVICE = "Spring Service"
+    public const val SPRING_SERVICE: String = "Spring Service"
 
     /**
      * Tag for components created from Spring's @Repository annotation.
      *
      * @see org.springframework.stereotype.Repository
      */
-    const val SPRING_REPOSITORY = "Spring Repository"
+    public const val SPRING_REPOSITORY: String = "Spring Repository"
 
-    const val SYNCHRONOUS = com.structurizr.model.Tags.SYNCHRONOUS
+    public const val SYNCHRONOUS: String = com.structurizr.model.Tags.SYNCHRONOUS
 
     /**
      * Tag to mark a SoftwareSystem as the system of interest.
      *
      * @see com.structurizr.model.SoftwareSystem
      */
-    const val SYSTEM_OF_INTEREST = "System of Interest"
+    public const val SYSTEM_OF_INTEREST: String = "System of Interest"
 
     /**
      * Tag to mark an element as a web browser.
      */
-    const val WEB_BROWSER = "Web Browser"
+    public const val WEB_BROWSER: String = "Web Browser"
 
     /**
      * Filters elements with all of the supplied tags. When tags is empty, then all the
@@ -81,7 +81,7 @@ object Tags {
      * @params tags the tags to use for filtering
      * @return those elements tagged with all of the supplied tags
      */
-    fun <T : Element> filter(elements: Set<T>, tags: Set<String>): Set<T> {
+    public fun <T : Element> filter(elements: Set<T>, tags: Set<String>): Set<T> {
         return elements.filter { element ->
             tags.all { tag -> element.hasTag(tag) }
         }.toSet()

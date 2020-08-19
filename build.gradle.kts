@@ -17,6 +17,10 @@ group = "io.github.sapientpants"
 version = Version.FULL
 extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
 
+kotlin {
+    explicitApi()
+}
+
 val dokka by tasks.getting(DokkaTask::class) {
     outputFormat = "javadoc"
     outputDirectory = "$buildDir/javadoc"

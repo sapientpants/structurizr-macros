@@ -8,7 +8,7 @@ import com.structurizr.model.Enterprise
  *
  * @see com.structurizr.Workspace
  */
-object StructurizrInitializer {
+public object StructurizrInitializer {
     /**
      * Initializes a Structurizr workspace, model and enterprise.
      *
@@ -20,7 +20,7 @@ object StructurizrInitializer {
      * @see com.structurizr.model.Model
      * @see com.structurizr.Workspace
      */
-    fun init(
+    public fun init(
         workspaceName: String,
         workspaceDescription: String,
         enterpriseName: String

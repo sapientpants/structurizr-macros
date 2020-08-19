@@ -9,7 +9,7 @@ import java.math.BigInteger
 /**
  * Macros to render the workspace using Structurizr.
  */
-object StructurizrRenderer {
+internal object StructurizrRenderer {
     /**
      * Renders the workspace using Structurizr. The API key, API secret and workspace are retrieved
      * using Env.getProperty()

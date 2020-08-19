@@ -12,7 +12,7 @@ import java.io.File
  *
  * @see StructurizrRenderer
  */
-object ViewpointsAndPerspectivesDocumentation {
+internal object ViewpointsAndPerspectivesDocumentation {
     private const val DEFAULT_SOURCE_PATH = "./src/main/markdown/viewpointsandperspectives"
 
     /**

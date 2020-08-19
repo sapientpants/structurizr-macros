@@ -5,7 +5,7 @@ import io.github.sapientpants.structurizr.macros.StructurizrInitializer
 import io.github.sapientpants.structurizr.macros.renderer.PlantUmlRenderer
 import io.github.sapientpants.structurizr.macros.styles.PlantUMLStyle
 
-class PlantUMLBuilder(
+public class PlantUMLBuilder(
     enterpriseName: String,
     workspaceName: String,
     workspaceDescription: String
@@ -19,7 +19,7 @@ class PlantUMLBuilder(
         this.style(PlantUMLStyle())
     }
 
-    fun outputPath(outputPath: String): PlantUMLBuilder {
+    public fun outputPath(outputPath: String): PlantUMLBuilder {
         this.outputPath = outputPath
         return this
     }

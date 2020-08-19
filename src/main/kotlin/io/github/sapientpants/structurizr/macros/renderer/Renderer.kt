@@ -1,6 +1,6 @@
 package io.github.sapientpants.structurizr.macros.renderer
 
-object Renderer {
+internal object Renderer {
     /**
      * Sanitizes the input string for use as a filename.
      *

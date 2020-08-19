@@ -4,7 +4,7 @@ import com.structurizr.view.Shape
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Tags
 
-class StructurizrStyle : Style() {
+public class StructurizrStyle : Style() {
     private val PERSON_BACKGROUND = "#f48f05"
 
     override fun applyToViews(views: ViewSet) {

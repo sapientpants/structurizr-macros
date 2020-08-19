@@ -12,7 +12,7 @@ import java.io.File
  *
  * @see StructurizrRenderer
  */
-object StructurizrDocumentation {
+internal object StructurizrDocumentation {
     private const val DEFAULT_SOURCE_PATH = "./src/main/markdown/structurizr"
 
     /**

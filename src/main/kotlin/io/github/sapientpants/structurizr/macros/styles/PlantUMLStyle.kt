@@ -4,7 +4,7 @@ import com.structurizr.view.Shape
 import com.structurizr.view.ViewSet
 import io.github.sapientpants.structurizr.macros.Tags
 
-class PlantUMLStyle : Style() {
+public class PlantUMLStyle : Style() {
     override fun applyToViews(views: ViewSet) {
         super.applyBaseStyles(views)
 

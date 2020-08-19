@@ -14,7 +14,7 @@ import io.github.sapientpants.structurizr.macros.styles.StructurizrStyle
 private const val DOCUMENTATION_SOURCE_PATH_MUST_NOT_BE_NULL =
     "documentationSourcePath must not be null"
 
-class StructurizrBuilder(
+public class StructurizrBuilder(
     enterpriseName: String,
     workspaceName: String,
     workspaceDescription: String
@@ -29,28 +29,28 @@ class StructurizrBuilder(
         this.style(StructurizrStyle())
     }
 
-    fun adrSourcePath(
+    public fun adrSourcePath(
         adrSourcePath: String
     ): StructurizrBuilder {
         this.adrSourcePath = adrSourcePath
         return this
     }
 
-    fun architectureDocumentation(
+    public fun architectureDocumentation(
         architectureDocumentation: ArchitectureDocumentation
     ): StructurizrBuilder {
         this.architectureDocumentation = architectureDocumentation
         return this
     }
 
-    fun documentationSourcePath(
+    public fun documentationSourcePath(
         documentationSourcePath: String
     ): StructurizrBuilder {
         this.documentationSourcePath = documentationSourcePath
         return this
     }
 
-    fun encryptionStrategy(encryptionStrategy: EncryptionStrategy): StructurizrBuilder {
+    public fun encryptionStrategy(encryptionStrategy: EncryptionStrategy): StructurizrBuilder {
         this.encryptionStrategy = encryptionStrategy
         return this
     }
