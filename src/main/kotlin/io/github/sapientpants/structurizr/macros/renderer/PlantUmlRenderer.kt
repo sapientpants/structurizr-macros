@@ -3,12 +3,12 @@ package io.github.sapientpants.structurizr.macros.renderer
 import com.structurizr.Workspace
 import com.structurizr.io.plantuml.PlantUMLWriter
 import com.structurizr.view.View
-import java.io.File
-import java.io.FileWriter
-import java.io.StringWriter
 import net.sourceforge.plantuml.FileUtils
 import net.sourceforge.plantuml.SourceFileReader
 import net.sourceforge.plantuml.security.SFile
+import java.io.File
+import java.io.FileWriter
+import java.io.StringWriter
 
 /**
  * Macros to render the workspace using PlantUML.

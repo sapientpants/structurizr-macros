@@ -1,7 +1,7 @@
-import java.net.URL
 import org.jetbrains.dokka.DokkaConfiguration
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.net.URL
 
 plugins {
     jacoco
@@ -25,9 +25,11 @@ val dokka by tasks.getting(DokkaTask::class) {
 
     includes = listOf("src/main/kotlin/packages.md")
 
-    externalDocumentationLink(delegateClosureOf<DokkaConfiguration.ExternalDocumentationLink.Builder> {
-        url = URL("https://docs.spring.io/spring-framework/docs/4.2.9.RELEASE/javadoc-api/")
-    })
+    externalDocumentationLink(
+        delegateClosureOf<DokkaConfiguration.ExternalDocumentationLink.Builder> {
+            url = URL("https://docs.spring.io/spring-framework/docs/4.2.9.RELEASE/javadoc-api/")
+        }
+    )
 }
 
 val dokkaJar by tasks.creating(Jar::class) {
@@ -63,6 +65,8 @@ val jar by tasks.getting(Jar::class) {
 
 repositories {
     jcenter()
+    // Up to date Structurizr jars
+    mavenCentral()
 }
 
 dependencies {
@@ -163,7 +167,8 @@ publishing {
 }
 
 if (project.hasProperty("signing.gnupg.keyName") &&
-        project.hasProperty("signing.gnupg.passphrase")) {
+    project.hasProperty("signing.gnupg.passphrase")
+) {
     signing {
         useGpgCmd()
         setRequired({

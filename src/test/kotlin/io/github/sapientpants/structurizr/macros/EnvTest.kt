@@ -22,17 +22,21 @@ class EnvTest {
             SYSTEM_PROPERTIES_TEST_VALUE
         )
         assertEquals(
-            SYSTEM_PROPERTIES_TEST_VALUE, Env.getProperty(
+            SYSTEM_PROPERTIES_TEST_VALUE,
+            Env.getProperty(
                 TEST_PROPERTY
-            ))
+            )
+        )
     }
 
     @Test
     fun `getProperty returns value from dotenv when not defined in system properties`() {
         assertEquals(
-            DOTENV_TEST_VALUE, Env.getProperty(
+            DOTENV_TEST_VALUE,
+            Env.getProperty(
                 TEST_PROPERTY
-            ))
+            )
+        )
     }
 
     @Test

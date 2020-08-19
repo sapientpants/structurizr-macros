@@ -2,11 +2,11 @@ package io.github.sapientpants.structurizr.macros.builder
 
 import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.documentation.ArchitectureDocumentation
-import java.lang.IllegalStateException
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
+import java.lang.IllegalStateException
 
 class StructurizrBuilderTest {
     private val ENTERPRISE_NAME = "TestEnterprise"
@@ -53,7 +53,7 @@ class StructurizrBuilderTest {
             .documentationSourcePath("./src/test/markdown/arc42")
             .build { model, _ ->
                 model.addSoftwareSystem("TestSoftwareSystem", null)
-        }
+            }
 
         assertFalse(workspace.documentation.isEmpty)
     }
