@@ -33,7 +33,7 @@ object CollaboratorViews {
     private fun createContainerCollaboratorView(container: Container, views: ViewSet) {
         val view = views.createContainerView(
             container.softwareSystem,
-            "Collaborators-${container.name}",
+            "${container.name}-Collaborator",
             "Container collaborator diagram for ${container.name}"
         )
         view.addNearestNeighbours(container)

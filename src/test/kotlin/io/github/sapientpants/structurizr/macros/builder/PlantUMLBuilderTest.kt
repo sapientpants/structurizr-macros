@@ -34,7 +34,7 @@ class PlantUMLBuilderTest {
         assertTrue(
             File(
                 outputPath.toString(),
-                "SystemContext_TestSoftwareSystem.png"
+                "TestSoftwareSystem_SystemContext.png"
             ).exists()
         )
     }
@@ -57,14 +57,14 @@ class PlantUMLBuilderTest {
         assertTrue(
             File(
                 outputPath.toString(),
-                "SystemContext_TestSoftwareSystem1.png"
+                "TestSoftwareSystem1_SystemContext.png"
             ).exists()
         )
 
         assertTrue(
             File(
                 outputPath.toString(),
-                "SystemContext_TestSoftwareSystem2.png"
+                "TestSoftwareSystem2_SystemContext.png"
             ).exists()
         )
     }
@@ -92,7 +92,7 @@ class PlantUMLBuilderTest {
         assertTrue(
             File(
                 outputPath.toString(),
-                "Containers_TestSoftwareSystem.png"
+                "TestSoftwareSystem_Container.png"
             ).exists()
         )
     }
@@ -126,7 +126,7 @@ class PlantUMLBuilderTest {
         assertTrue(
             File(
                 outputPath.toString(),
-                "Components_TestContainer_TestSoftwareSystem.png"
+                "TestSoftwareSystem_TestContainer_Component.png"
             ).exists()
         )
     }

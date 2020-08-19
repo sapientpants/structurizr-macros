@@ -1,16 +1,12 @@
 package io.github.sapientpants.structurizr.macros.builder
 
 import com.structurizr.Workspace
+import com.structurizr.model.CreateImpliedRelationshipsUnlessSameRelationshipExistsStrategy
 import com.structurizr.model.Location
 import com.structurizr.model.Model
 import com.structurizr.model.SoftwareSystem
 import io.github.sapientpants.structurizr.macros.Tags
 import io.github.sapientpants.structurizr.macros.styles.Style
-import io.github.sapientpants.structurizr.macros.views.ComponentViews
-import io.github.sapientpants.structurizr.macros.views.ContainerView
-import io.github.sapientpants.structurizr.macros.views.DeploymentViews
-import io.github.sapientpants.structurizr.macros.views.SystemContextView
-import io.github.sapientpants.structurizr.macros.views.SystemLandscapeView
 
 abstract class Builder(
     protected val enterpriseName: String,
@@ -80,27 +76,15 @@ abstract class Builder(
 
     private fun addImplicitRelationshipsToModel(model: Model, addImplicitRelationships: Boolean) {
         if (addImplicitRelationships) {
-            model.addImplicitRelationships()
+            model.setImpliedRelationshipsStrategy(CreateImpliedRelationshipsUnlessSameRelationshipExistsStrategy())
         }
     }
 
     private fun addViewsToWorkspace(workspace: Workspace, style: Style) {
-        val model = workspace.model
+        // val model = workspace.model
         val views = workspace.views
 
-        val systemsOfInterest = systemsOfInterest(model)
-
-        SystemLandscapeView.addToViews(model, views)
-
-        systemsOfInterest.forEach { systemOfInterest ->
-            SystemContextView.addToViews(systemOfInterest, views)
-
-            ContainerView.addToViews(systemOfInterest, views)
-
-            ComponentViews.addToViews(systemOfInterest.containers, views)
-
-            DeploymentViews.addToViews(systemOfInterest, views)
-        }
+        views.createDefaultViews()
 
         // Apply the style
         style.applyToViews(views)
