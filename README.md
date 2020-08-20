@@ -1,7 +1,7 @@
 # structurizr-macros
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.sapientpants/structurizr-macros/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.sapientpants/structurizr-macros)
-[![Build Status](https://travis-ci.org/sapientpants/structurizr-macros.svg?branch=trunk)](https://travis-ci.org/sapientpants/structurizr-macros)
+[![Build Status](https://travis-ci.com/sapientpants/structurizr-macros.svg?branch=trunk)](https://travis-ci.org/sapientpants/structurizr-macros)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=structurizr-macros&metric=alert_status)](https://sonarcloud.io/dashboard?id=structurizr-macros)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=structurizr-macros&metric=coverage)](https://sonarcloud.io/dashboard?id=structurizr-macros)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=structurizr-macros&metric=bugs)](https://sonarcloud.io/dashboard?id=structurizr-macros)
