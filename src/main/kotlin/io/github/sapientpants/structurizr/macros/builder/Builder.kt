@@ -81,7 +81,6 @@ public abstract class Builder(
     }
 
     private fun addViewsToWorkspace(workspace: Workspace, style: Style) {
-        // val model = workspace.model
         val views = workspace.views
 
         views.createDefaultViews()
