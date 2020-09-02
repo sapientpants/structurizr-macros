@@ -1,7 +1,4 @@
-import org.jetbrains.dokka.DokkaConfiguration
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.net.URL
 
 plugins {
     jacoco
@@ -21,28 +18,26 @@ kotlin {
     explicitApi()
 }
 
-val dokka by tasks.getting(DokkaTask::class) {
-    outputFormat = "javadoc"
-    outputDirectory = "$buildDir/javadoc"
+// val dokka by tasks.getting(DokkaTask::class) {
+//     outputFormat = "javadoc"
+//     outputDirectory = "$buildDir/javadoc"
+//
+//     jdkVersion = 8
+//
+//     includes = listOf("src/main/kotlin/packages.md")
+//
+//     externalDocumentationLink(
+//         delegateClosureOf<DokkaConfiguration.ExternalDocumentationLink.Builder> {
+//             url = URL("https://docs.spring.io/spring-framework/docs/4.2.9.RELEASE/javadoc-api/")
+//         }
+//     )
+// }
 
-    jdkVersion = 8
-
-    includes = listOf("src/main/kotlin/packages.md")
-
-    externalDocumentationLink(
-        delegateClosureOf<DokkaConfiguration.ExternalDocumentationLink.Builder> {
-            url = URL("https://docs.spring.io/spring-framework/docs/4.2.9.RELEASE/javadoc-api/")
-        }
-    )
+tasks.register<Jar>("dokkaJar") {
+    archiveClassifier.set("javadoc")
+    dependsOn("dokkaJavadoc")
+    from("$buildDir/dokka/javadoc/")
 }
-
-val dokkaJar by tasks.creating(Jar::class) {
-    group = JavaBasePlugin.DOCUMENTATION_GROUP
-    description = "Assembles Kotlin docs with Dokka"
-    classifier = "javadoc"
-    from(dokka)
-}
-artifacts.add("archives", dokkaJar)
 
 ktlint {
     verbose.set(true)
@@ -94,7 +89,7 @@ tasks.test {
 }
 
 jacoco {
-    toolVersion = "0.8.4"
+    toolVersion = "0.8.5"
 }
 
 tasks.jacocoTestReport {
