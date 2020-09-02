@@ -16,7 +16,7 @@ public abstract class Style {
     public val SPRING_SERVICE_BACKGROUND: String = "#b9ddff"
     public val SPRING_REPOSITORY_BACKGROUND: String = "#e2f2ff"
 
-    protected abstract fun applyToViews(views: ViewSet)
+    abstract fun applyToViews(views: ViewSet)
 
     protected fun applyBaseStyles(views: ViewSet) {
         val styles = views.configuration.styles
