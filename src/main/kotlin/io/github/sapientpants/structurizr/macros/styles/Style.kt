@@ -18,7 +18,7 @@ public abstract class Style {
 
     public abstract fun applyToViews(views: ViewSet)
 
-    protected fun applyBaseStyles(views: ViewSet) {
+    public fun applyBaseStyles(views: ViewSet) {
         val styles = views.configuration.styles
 
         styles.clearElementStyles()
